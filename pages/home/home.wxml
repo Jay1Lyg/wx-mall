@@ -1,0 +1,55 @@
+<view class='topbar'>
+	<view class='topbar-view offer'>
+		<text>{{offer}}</text>
+	</view>
+	<view class='topbar-view search' bindtap='search'>
+		<view class='search-image'>
+			<image src='../../image/homesearch.png'></image> 
+		</view>
+		<text class='search-font'>搜索</text>
+	</view>
+	<view class='topbar-view service'>
+			<view class='service-image'>
+				<image src='../../image/homexiaoxi.png'></image>
+			</view>
+			<text class='service-text'>{{message}}</text>
+	</view>
+</view>
+<view class="page-section page-section-spacing swiper">
+		<swiper indicator-dots="true"
+			autoplay="true" interval="2000" duration="500" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#ffffff">
+			<block wx:for="{{image}}" wx:key="*this">
+				<swiper-item>
+					<image src='{{item}}' class="swiper-item"></image>
+				</swiper-item>
+			</block>
+		</swiper>
+</view>
+<view class='classification'>
+	<view class='classes' wx:for='{{classes}}'>
+		<image src='{{item.image}}'></image>
+		<text>{{item.text}}</text>
+	</view>
+</view>
+<view class='card'>
+	 
+    
+</view>
+<view class='recommend'>
+	<view class='recommend-text'>
+		<text >店长推荐</text>
+	</view>
+	<view class='recommend-detail'>
+		<view wx:for='{{recommend}}' class='produce-detail' bindtap='producedetail'>
+			<image src='{{item.image}}'></image>
+			<view class='produce-text'>
+				<text class='produce-name'>{{item.text}}</text>
+				<view class='produce-info'>
+					<text class='produce-price'>￥{{item.price}}</text>
+					<text class='produce-pay'>{{item.price}}付款</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view style='clear:both'></view>
+</view>

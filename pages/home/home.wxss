@@ -1,0 +1,185 @@
+/* pages/home/home.wxss */
+@import "../../utils/weui.wxss";
+.topbar{
+	width: 100%;
+	height: 80rpx;
+	border: 1px solid black;
+	display: flex
+}
+.offer{
+	text-align: center;
+	line-height: 80rpx;
+	font-size: 26rpx;
+	flex: 2;
+	color: #a1a1a1
+}
+.search{
+	flex: 3;
+	border: 2px solid #e7242a;
+	border-radius: 30rpx;
+	height: 60rpx;
+	margin: 8rpx;
+	font-size: 26rpx;
+	color: #a1a1a1;
+	display: flex
+}
+/* .search:hover{
+	
+} */
+.search-image{
+
+	display: block;
+	flex: 1
+}
+.search-image image{
+	width: 32rpx;
+	height: 33rpx;
+	margin: 14rpx 2% 14rpx 70%; 
+}
+.search-font{
+	line-height: 60rpx;
+	flex: 1
+}
+.service{
+	flex: 1;
+	position: relative;
+}
+
+.service-image image{
+	width: 50rpx;
+	height: 44rpx;
+	position: absolute;
+	top: 18rpx;
+	left: 20%
+}
+.service-text{
+	width: 26rpx;
+	height: 26rpx;
+	font-size: 16rpx;
+	background: #e7242a;
+	display: block;
+	line-height: 26rpx;
+	text-align: center;
+	color: white;
+	border-radius: 13rpx;
+	position: absolute;
+	top: 10rpx;
+	left: 50%
+}
+.page-section{
+	height: 400rpx;
+}
+.page-section swiper{
+	height: 400rpx;
+}
+.swiper-item{
+	width: 100%;
+	height: 400rpx;
+}
+.classification{
+	display: flex;
+	height: 150rpx;
+	margin: 20rpx 0
+}
+.classes{
+	flex: 1;
+	min-width: 150rpx
+}
+.classes image{
+	width: 100rpx;
+	height: 100rpx;
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+	border-radius: 50%;
+	
+}
+.classes text{
+	display: block;
+	font-size: 26rpx;
+	text-align: center
+}
+
+.card{
+	width: 100%;
+	height: 174rpx;
+	border: 1px solid black;
+	background: #e7242a
+}
+.recommend{
+	width: 100%;
+	background: #f2f2f2;
+}
+.recommend-text{
+	text-align: center;
+	font-size: 26rpx;
+	background: #f2f2f2;
+	height: 100rpx;
+	line-height: 100rpx;
+	color: #e7242a;
+	
+}
+.recommend-text text{
+	border: 1px dashed #e7242a;
+	padding: 20rpx 50rpx;
+	border-radius: 60rpx;
+}
+.recommend-detail{
+	width: 100%;
+	
+}
+.produce-detail{
+	width: 49%;
+	float: left;
+	height: 520rpx;
+	margin: 10rpx 0.5%;
+	background: white;
+	font-size: 26rpx;
+}
+.produce-detail image{
+	margin: 0 auto;
+	width: 100%;
+	display: block;
+	height: 370rpx;
+}
+.produce-text{
+	width: 100%
+}
+.produce-name{
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	display:-webkit-box; 
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2; 
+	color: #434343;
+	margin: 10rpx 10rpx;
+	height: 80rpx;
+}
+.produce-info{
+	width: 100%;
+	display: flex
+}
+.produce-price{
+	color: #e7242a;
+	font-weight: bold;
+	flex: 1
+}
+.produce-pay{
+	flex: 1;
+	text-align: right;
+	margin-right: 10rpx;
+	color: #a1a1a1
+}
+.page-section{
+  width: 100%;
+  position: relative;
+
+}
+.page-section swiper{
+	
+}
+.page-section_center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
