@@ -1,14 +1,34 @@
-// pages/search/search.js
+// pages/submitorder/submitorder.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		historical: ['腰果', '腰果', '腰果', '腰果']
+		goodes: [
+			{
+				active: 0,
+				id: 0,
+				image: '../../image/14.png',
+				name: '不成熟的计划',
+				guige: '麻辣',
+				num: 1,
+				price: 123
+			},
+			{
+				active: 0,
+				id: 2,
+				image: '../../image/14.png',
+				name: '不成熟的计划',
+				guige: '麻辣',
+				num: 1,
+				price: 123
+			},
+		]
   },
-	search:function(res){
-		wx.navigateTo({ url: '../searchresult/searchresult' })
+	addaddress:function(res){
+		var that=this;
+		wx.navigateTo({ url: '../addaddress/addaddress' })
 	},
   /**
    * 生命周期函数--监听页面加载

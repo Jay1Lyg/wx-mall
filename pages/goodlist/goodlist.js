@@ -1,15 +1,13 @@
-// pages/search/search.js
+// pages/goodlist/goodlist.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		historical: ['腰果', '腰果', '腰果', '腰果']
+  
   },
-	search:function(res){
-		wx.navigateTo({ url: '../searchresult/searchresult' })
-	},
+
   /**
    * 生命周期函数--监听页面加载
    */

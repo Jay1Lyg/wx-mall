@@ -1,1 +1,78 @@
 /* pages/mine/mine.wxss */
+.userinfo{
+	width: 100%;
+	height: 300rpx;
+	background: #f2f2f2;
+	text-align: center;
+	padding-top: 100rpx;
+}
+.userinfo image{
+	width: 120rpx;
+	height: 120rpx;
+	display: block;
+	margin: 0rpx auto;
+	border-radius: 50%;
+}
+.userinfo text{
+	font-size: 28rpx;
+	color: #434343;
+	line-height: 60rpx;
+}
+.order{
+	width: 100%;
+	height: 140rpx;
+	display: flex;
+	border-bottom:10rpx solid #f2f2f2
+}
+.order-detail{
+	flex: 1;
+	text-align: center;
+	margin-top: 36rpx;
+}
+.order-detail image{
+	width: 48rpx;
+	height: 46rpx;
+	display: block;
+	margin: 0 auto
+}
+.active{
+	color: #515151;
+	border-right: 1rpx solid #f2f2f2
+}
+
+.order-detail text{
+	color: #a1a1a1;
+	font-size: 22rpx;
+}
+.active text{
+	color: #515151
+}
+
+.card{
+	width: 100%;
+	height: 100rpx;
+	display: flex;
+	border-bottom: 1px solid #f2f2f2
+}
+.card-image{
+	flex: 1
+}
+.card-image image{
+	width: 52rpx;
+	height: 42rpx;
+	display: block;
+	margin: 24rpx auto;
+}
+.card-text{
+	color: #434343;
+	font-size: 30rpx;
+	line-height: 100rpx;
+	flex: 3
+}
+.card-right{
+	flex: 1;
+	color: #a1a1a1;
+	line-height: 100rpx;
+	text-align: right;
+	margin-right: 30rpx;
+}

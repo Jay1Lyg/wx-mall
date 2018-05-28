@@ -1,2 +1,36 @@
 <!--pages/shoppingcart/shoppingcart.wxml-->
-<text>pages/shoppingcart/shoppingcart.wxml</text>
+<view class='goodList-info'>
+	<view class='goods-num'>
+		<text>共5件商品</text>
+	</view>
+	<view class='goodsallselect'>
+		<image bindtap='allselect' class="{{allselect?'allselect':''}}" src='../../image/sel.png'></image>
+		<image bindtap='allselect' class="{{allselect?'':'allselect'}}" src='../../image/nosel.png'></image>
+		<text bindtap='allselect'>全选</text>
+	</view>
+	<view class='goodsdeletd'>
+		<text>删除</text>
+	</view>
+</view>
+<view class='goodslist' wx:for='{{goodes}}' >
+	<view class='goodslist-sel'>
+		<image bindtap='select' class=" {{item.active?'active':''}}" src='../../image/sel.png' data-id='{{item.id}}'></image>
+		<image bindtap='select' class=" {{item.active?'':'active'}}" src='../../image/nosel.png' data-id='{{item.id}}'></image>
+	</view>
+	<view class='goodslist-image'>
+		<image src='{{item.image}}'></image>
+	</view>
+	<view class='good-info'>
+		<view class='goodname'>
+			<text>{{item.name}}</text>
+		</view>
+		<view class='guige'>
+			<text class='guigename'>口味：{{item.guige}}</text>
+			<text class='goodnum'>{{item.num}}</text>
+		</view>
+		<view class='price-edit'>
+			<text class='price'>￥{{item.price}}</text>
+			<text class='edit'>编辑</text>
+		</view>
+	</view>
+</view>

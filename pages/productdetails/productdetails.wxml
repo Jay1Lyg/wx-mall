@@ -102,22 +102,18 @@
 	<view style='height:880rpx'>
 		<view class='pro-info'>
 			<view class='pro-image'>
-				<image src='../../image/15.png'></image>
+				<image src='{{initial.image}}'></image>
 			</view>
 			<view class='pro-num'>
-				<text class='pro-price'>￥36.3</text>
-				<text class='pro-oldprice'>￥66</text>
-				<text class='pro-stock'>库存：122</text>
+				<text class='pro-price'>￥{{initial.price}}</text>
+				<text class='pro-oldprice'>￥{{initial.Originalprice}}</text>
+				<text class='pro-stock'>库存：{{initial.surplus}}</text>
 			</view>
 		</view>
 		<view class='specification-detail'>
 			<text class='specification-detail-text'>口味</text>
-			<view class='specification-detailes'>
-				<text class='specification-detailes-text'>麻辣</text>
-				<text class='specification-detailes-text'>麻辣</text>
-				<text class='specification-detailes-text'>麻辣</text>
-				<text class='specification-detailes-text'>麻辣</text>
-				<text class='specification-detailes-text'>麻辣</text>
+			<view class='specification-detailes' >
+				<text wx:for='{{productspecification}}'  data-id='{{item.id}}' data-active='{{item.active}}' class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.name}}</text>
 			</view>
 		</view>
 		<view class='buy-num'>

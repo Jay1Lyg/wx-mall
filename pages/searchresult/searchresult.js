@@ -1,35 +1,15 @@
-// pages/home/home.js
+// pages/searchresult/searchresult.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		offer:'全场满199包邮',
-		message:20,
-		image:[
-			'../../image/red.png',
-			'../../image/red.png',
-			'../../image/red.png',
-			'../../image/red.png',
-			'../../image/red.png',
-		],
-		classes:[
-			{
-				image:'../../image/14.png',
-				text:'坚果'
-			},
-			{
-				image: '../../image/15.png',
-				text: '坚果'
-			}
-		],
-		
-			recommend:[
+		recommend: [
 			{
 				image: '../../image/14.png',
 				text: '尽快改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了个',
-				price:100
+				price: 100
 			},
 			{
 				image: '../../image/14.png',
@@ -46,16 +26,10 @@ Page({
 				text: '尽快改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了个',
 				price: 100
 			},
-		
+
 		]
-		
   },
-	search:function(res){
-		wx.navigateTo({ url: '../search/search' })
-	},
-	producedetail:function(res) {
-		wx.navigateTo({ url: '../productdetails/productdetails' })
-	},
+
   /**
    * 生命周期函数--监听页面加载
    */

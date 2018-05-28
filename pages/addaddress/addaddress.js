@@ -1,15 +1,14 @@
-// pages/search/search.js
+// pages/addaddress/addaddress.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		historical: ['腰果', '腰果', '腰果', '腰果']
+		region: ['北京市', '北京市', '东城区'],
+		customItem: '全部'
   },
-	search:function(res){
-		wx.navigateTo({ url: '../searchresult/searchresult' })
-	},
+
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/submitorder/submitorder",
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
@@ -11,7 +12,10 @@
     "pages/productdetails/productdetails",
     "pages/address/address",
     "pages/cardvoucher/cardvoucher",
-    "pages/orders/orders"
+    "pages/orders/orders",
+    "pages/searchresult/searchresult",
+    "pages/addaddress/addaddress",
+    "pages/selectaddrress/selectaddress"
   ],
   "window": {
     "backgroundTextStyle": "light",

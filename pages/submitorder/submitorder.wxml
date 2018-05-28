@@ -1,0 +1,43 @@
+<!--pages/submitorder/submitorder.wxml-->
+<view class='addaddress' bindtap='addaddress'>
+	<text class='addtext'>添加收货地址</text>
+	<text class='addda'>></text>
+</view>
+<view class='goodslist' wx:for='{{goodes}}' >
+	<view class='goodslist-image'>
+		<image src='{{item.image}}'></image>
+	</view>
+	<view class='good-info'>
+		<view class='goodname'>
+			<text>{{item.name}}</text>
+		</view>
+		<view class='guige'>
+			<text class='guigename'>口味：{{item.guige}}</text>
+			<text class='goodnum'>{{item.num}}</text>
+		</view>
+		<view class='price-edit'>
+			<text class='price'>￥{{item.price}}</text>
+		</view>
+	</view>
+</view>
+<view style='border-bottom:10rpx solid #f2f2f2'></view>
+<view class='addaddress' style='border-bottom:2rpx solid #f2f2f2'>
+	<text class='addtext'>运费</text>
+	<text class='addda'>></text>
+</view>
+
+<view class='addaddress' style='margin-bottom:110rpx'>
+	<text class='beizhu'>备注</text>
+	<view class='addbeizhu'>
+		<input type='text' placeholder='点击填写备注'></input>
+	</view>
+</view>
+
+<view class='submit'>
+	<view class='submit-price'>
+		共计：<text >1232</text>
+	</view>
+	<view class='submit-btn'>
+		<text>提交订单</text>
+	</view>
+</view>
