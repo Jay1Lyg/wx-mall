@@ -1,2 +1,24 @@
-<!--pages/allproducts/allproducts.wxml-->
-<text>pages/allproducts/allproducts.wxml</text>
+<view class='tab'>
+	<view class="tabdetail ">
+		<text>价格</text>
+	</view>
+	<view class="tabdetail borders ">
+		<text>销量</text>
+	</view>
+	<view class="tabdetail {{active?'active':''}}">
+		<text>上新</text>
+	</view>
+</view>
+<view class='recommend-detail'>
+		<view wx:for='{{recommend}}' class='produce-detail' bindtap='producedetail'>
+			<image src='{{item.image}}'></image>
+			<view class='produce-text'>
+				<text class='produce-name'>{{item.text}}</text>
+				<view class='produce-info'>
+					<text class='produce-price'>￥{{item.price}}</text>
+					<text class='produce-pay'>{{item.price}}付款</text>
+				</view>
+			</view>
+		</view>
+</view>
+<view style='clear:both'></view>

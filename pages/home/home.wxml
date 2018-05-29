@@ -26,13 +26,26 @@
 		</swiper>
 </view>
 <view class='classification'>
-	<view class='classes' wx:for='{{classes}}'>
-		<image src='{{item.image}}'></image>
-		<text>{{item.text}}</text>
-	</view>
+	<scroll-view scroll-x="true" class="tab-h" >
+		<view class='classes' wx:for='{{classes}}'>
+			<image src='{{item.image}}'></image>
+			<text>{{item.text}}</text>
+		</view>
+	</scroll-view>
 </view>
 <view class='card'>
-	 
+	 <scroll-view scroll-x="true" class="tab-card" >
+		<view class='card-detail' wx:for='{{card}}'>
+			<view class='card-left'>
+				<text class='card-price'>{{item.voucher}}</text>
+				<text class='yuan'>元</text>
+			</view>
+			<view class='card-right'>
+				<text class='card-man'>满{{item.least}}使用</text>
+				<text class='data'>{{item.start}}至{{item.end}}</text>
+			</view>
+		</view>
+	</scroll-view>
     
 </view>
 <view class='recommend'>

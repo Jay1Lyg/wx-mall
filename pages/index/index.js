@@ -1,54 +1,55 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
+var app = getApp();
 Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
+	data: {
+		// currentTab: 0, //预设当前项的值
+		// scrollLeft: 0, //tab标题的滚动条位置
+		expertList: ['bjk', 'kjghlkj', 'uyu', 'jhgfj', 'jhg', 'uyu', 'jhgfj', 'uyu', 'jhgfj']
+	},
+	// 滚动切换标签样式
+	switchTab: function (e) {
+		console.log(e)
+		this.setData({
+			currentTab: e.detail.current
+		});
+		// this.checkCor();
+	},
+	// 点击标题切换当前页时改变样式
+	// swichNav: function (e) {
+	// 	console.log(e)
+	// 	var cur = e.target.dataset.current;
+	// 	if (this.data.currentTaB == cur) { return false; }
+	// 	else {
+	// 		this.setData({
+	// 			currentTab: cur
+	// 		})
+	// 	}
+	// },
+	// checkCor: function () {
+	// 	if (this.data.currentTab > 4) {
+	// 		this.setData({
+	// 			scrollLeft: 300
+	// 		})
+	// 	} else {
+	// 		this.setData({
+	// 			scrollLeft: 0
+	// 		})
+	// 	}
+	// },
+	onLoad: function () {
+		var that = this;
+		//  高度自适应
+		// wx.getSystemInfo({
+		// 	success: function (res) {
+		// 		var clientHeight = res.windowHeight,
+		// 			clientWidth = res.windowWidth,
+		// 			rpxR = 750 / clientWidth;
+		// 		var calc = clientHeight * rpxR - 180;
+		// 		console.log(calc)
+		// 		that.setData({
+		// 			winHeight: calc
+		// 		});
+		// 	}
+		// });
+	},
+	// footerTap: app.footerTap
 })

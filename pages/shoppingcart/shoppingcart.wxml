@@ -34,3 +34,13 @@
 		</view>
 	</view>
 </view>
+
+
+<view class='submit'>
+	<view class='submit-price'>
+		共计：<text >1232</text>
+	</view>
+	<view class='submit-btn'>
+		<text>提交订单</text>
+	</view>
+</view>

@@ -8,7 +8,14 @@ Page({
 		region: ['北京市', '北京市', '东城区'],
 		customItem: '全部'
   },
-
+	bindRegionChange:function(res){
+		var that=this;
+		var newadderss=res.detail.value;
+		that.setData({
+			region: newadderss
+		})
+		console.log(res)
+	},
   /**
    * 生命周期函数--监听页面加载
    */

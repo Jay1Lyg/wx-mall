@@ -77,13 +77,17 @@
 	height: 400rpx;
 }
 .classification{
-	display: flex;
-	height: 150rpx;
-	margin: 20rpx 0
+
+	 
+	width: 100%;
+	margin: 20rpx 0 
 }
+
+.tab-h{
+    height: 160rpx;width: 100%; box-sizing: border-box;overflow: hidden;line-height: 80rpx;background: #F7F7F7; font-size: 16px; white-space: nowrap; z-index: 99;}
 .classes{
-	flex: 1;
-	min-width: 150rpx
+	display: inline-block;
+	width: 160rpx;
 }
 .classes image{
 	width: 100rpx;
@@ -99,13 +103,64 @@
 	font-size: 26rpx;
 	text-align: center
 }
-
+/*////////////////////  */
 .card{
 	width: 100%;
 	height: 174rpx;
-	border: 1px solid black;
-	background: #e7242a
+	background: #e7242a;
 }
+
+.tab-card{
+    height: 174rpx;width: 100%; box-sizing: border-box;overflow: hidden;line-height: 80rpx; font-size: 16px; white-space: nowrap; z-index: 99;}
+
+.card-detail{
+	display: inline-block;
+	width: 336rpx;
+	height: 142rpx;
+	margin: 15rpx 30rpx;
+
+	background: linear-gradient(to right, #f29945 , #e33d8f);
+	border-radius: 20rpx;
+}
+.card-left{
+	float: left;
+	width: 106rpx;
+	height: 142rpx;
+	border-right: 2rpx dashed white;
+	text-align: center
+}
+.card-right{
+	float: left;
+	width: 228rpx;
+	height: 142rpx;
+	text-align: center
+}
+.card-price{
+	margin-top: 5rpx;
+	font-size: 60rpx;
+	height: 55rpx;
+	color: white;
+	display: block
+}
+.yuan{
+	font-size: 28rpx;
+	color: white;
+
+}
+.card-man{
+	margin-top: 5rpx;
+	font-size: 28rpx;
+	height: 55rpx;
+	color: white;
+	display: block
+}
+.data{
+	font-size: 18rpx;
+	color: white;
+
+}
+
+/* /////////////////////////// */
 .recommend{
 	width: 100%;
 	background: #f2f2f2;
@@ -183,3 +238,9 @@
   flex-direction: column;
   align-items: center;
 }
+
+
+
+
+/* .tab-h{
+    height: 80rpx;width: 100%; box-sizing: border-box;overflow: hidden;line-height: 80rpx;background: #F7F7F7; font-size: 16px; white-space: nowrap;position: fixed;top: 0; left: 0; z-index: 99;} */
