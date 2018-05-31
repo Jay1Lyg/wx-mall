@@ -1,0 +1,48 @@
+<!--pages/template/template.wxml-->
+<template name="order">	
+<view wx:for='{{goodes}}'>
+	<view class='goodslist'  >
+		<view class='goodslist-image'>
+			<image src='{{item.image}}'></image>
+		</view>
+		<view class='good-info'>
+			<view class='goodname'>
+				<text>{{item.name}}</text>
+			</view>
+			<view class='guige'>
+				<text class='guigename'>口味：{{item.guige}}</text>
+				<text class='goodnum'>{{item.num}}</text>
+			</view>
+			<view class='price-edit'>
+				<text class='price'>￥{{item.price}}</text>
+			</view>
+		</view>
+	</view>
+	<view>
+	hkjhl
+	</view>
+</view>
+
+</template>
+<template name='detail'>
+
+		<view wx:for='{{recommend}}' class='produce-detail' bindtap='producedetail'>
+			<image src='{{item.image}}'></image>
+			<view class='produce-text'>
+				<text class='produce-name'>{{item.text}}</text>
+				<view class='produce-info'>
+					<text class='produce-price'>￥{{item.price}}</text>
+					<text class='produce-pay'>{{item.price}}付款</text>
+				</view>
+			</view>
+		</view>
+
+</template>
+<template name='tab'>
+	<view >
+    <scroll-view scroll-x="true" class="tab-h" >
+        <view wx:for='{{list}}'  class="tab-item {{item.active?'active':''}}" data-id='{{item.id}}' bindtap='qiehuan' >{{item.tabdetail}}</view>
+    </scroll-view>
+</view>
+
+</template>

@@ -42,7 +42,12 @@ Page({
 		]
 		
   },
-
+	address:function(e){
+		wx.navigateTo({ url: '../selectaddrress/selectaddress' })
+	},
+	card:function(e){
+		wx.navigateTo({ url: '../cardvoucher/cardvoucher' })
+	},
   /**
    * 生命周期函数--监听页面加载
    */

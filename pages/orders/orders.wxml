@@ -1,2 +1,31 @@
 <!--pages/orders/orders.wxml-->
-<text>pages/orders/orders.wxml</text>
+<import src="../template/template.wxml"/> 
+<view class='tab'>
+	<text bindtap='ordertab' class="tab-text {{item.display?'active':''}}" wx:for='{{tab}}' data-id='{{item.active}}'>{{item.tab}}</text>
+</view>
+<block wx:if='{{active===0}}'> 
+	<template is='order' data="{{goodes}}">
+	</template>
+</block> 
+<block wx:if='{{active===1}}'> 
+	<template is='order' data="{{goodes}}">
+	</template>
+	1
+</block> 
+<block wx:if='{{active===2}}'> 
+	<template is='order' data="{{goodes}}">
+	</template>
+	2
+</block> 
+<block wx:if='{{active===3}}'> 
+	<template is='order' data="{{goodes}}">
+	</template>
+</block> 
+<block wx:if='{{active===4}}'> 
+	<template is='order' data="{{goodes}}">
+	</template>
+</block> 
+<block wx:if='{{active===5}}'> 
+	<template is='order' data="{{goodes}}">
+	</template>
+</block> 

@@ -1,53 +1,13 @@
-// pages/cardvoucher/cardvoucher.js
+// pages/template/template.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		display:1,
-		card: [
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
-		]
+	
   },
-	switchtab:function(e){
-		console.log(1)
-		var that = this;
-		var display= that.data.display;
-		if (display){
-			that.setData({
-				display: 0
-			})
-		}else{
-			that.setData({
-				display: 1
-			})
-		}
-		
-	},
+
   /**
    * 生命周期函数--监听页面加载
    */

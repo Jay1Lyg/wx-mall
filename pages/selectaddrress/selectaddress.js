@@ -73,7 +73,8 @@ Page({
 	},
 	address:function(res){
 		console.log(res)
-		console.log('添加地址')
+		console.log('添加地址');
+		wx.navigateTo({ url: '../addaddress/addaddress' })
 	},
   /**
    * 生命周期函数--监听页面加载

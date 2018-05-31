@@ -60,9 +60,15 @@ Page({
 		var id=res.target.dataset.id;
 		
 		this.allsel();
-		
+		var arr = [];
+	
 		for(var i=0;i<that.data.goodes.length;i++){
-		
+			if (that.data.goodes[i].active===0) {
+				console.log(2222222)
+				// that.setData({
+				// 	allselect: 0,
+				// })
+			}
 			if(that.data.goodes[i].id===id){
 				// console.log(i);
 				var index=i;
@@ -71,10 +77,6 @@ Page({
 					var goodes = that.data.goodes;
 					var all=0;
 					// console.log(goodes)
-					that.setData({
-						
-						allselect:all
-					})
 				}else{
 					that.data.goodes[index].active = 1;
 					var goodes = that.data.goodes;
@@ -88,32 +90,35 @@ Page({
 			})
 			// console.log(that.data.allselect)
 		}
-		
-	},
-	allsel:function(){
-		var that=this;
-		for (var i = 0; i < that.data.goodes.length; i++) {
-			if (that.data.goodes[i].active) {
-				console.log(that.data.goodes)
-				console.log(i)
-				that.setData({
-					allselect: 1,
-				})
-			}
-		}
-	},
-	noallsel: function () {
-		var that = this;
-		for (var i = 0; i < that.data.goodes.length; i++) {
-			if (!that.data.goodes[i].active) {
-				console.log(that.data.goodes)
-				console.log(i)
+		for (let i of that.data.goodes) {
+			console.log(i);
+
+			arr.push(i.active);
+			console.log(arr);
+			console.log(new Set(arr).size)
+			if (arr[0]===0&&new Set(arr).size===1) {
 				that.setData({
 					allselect: 0,
 				})
 			}
+
 		}
 	},
+	allsel:function(){
+		var that=this;
+		var arr=[];
+		for (let i of that.data.goodes) {
+			console.log(i);	
+			arr.push(i.active);
+			if (arr[0] === 1 && new Set(arr).size === 1) {
+				that.setData({
+					allselect: 1,
+				})
+			}
+
+		}
+	},
+
   /**
    * 生命周期函数--监听页面加载
    */

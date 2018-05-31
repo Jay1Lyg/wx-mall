@@ -106,6 +106,9 @@ Page({
 	producedetail:function(res) {
 		wx.navigateTo({ url: '../productdetails/productdetails' })
 	},
+	classification:function(res){
+		wx.navigateTo({ url: '../classification/classification' })
+	},
   /**
    * 生命周期函数--监听页面加载
    */

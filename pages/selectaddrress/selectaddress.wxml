@@ -17,4 +17,4 @@
 	</view>
 </view>
 
-<button class='btn' type='warn' bindtouchmove='address'>添加新地址</button>
+<button class='btn' type='warn' bindtap='address'>添加新地址</button>

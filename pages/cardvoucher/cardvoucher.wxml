@@ -1,2 +1,41 @@
 <!--pages/cardvoucher/cardvoucher.wxml-->
-<text>pages/cardvoucher/cardvoucher.wxml</text>
+<view class='card-tab'>
+ <view class="card-new {{display?'active':''}}" bindtap='switchtab'>
+		<text>优惠卡券</text>
+ </view>
+  <view class="card-old {{display?'':'active'}}" bindtap='switchtab'>
+		<text>失效卡券</text>
+ </view>
+</view>
+
+<block wx:if='{{display}}'>
+	<view class='discount'>
+		<view class='card-detail' wx:for='{{card}}'>
+			<view class='card-left'>
+				<text class='card-price'>{{item.voucher}}</text>
+				<text class='yuan'>元</text>
+			</view>
+			<view class='card-right'>
+				<text class='card-man'>满{{item.least}}使用</text>
+				<text class='data'>{{item.start}}至{{item.end}}</text>
+			</view>
+		</view>
+	</view>
+</block>
+<block wx:else='{{display}}'>
+		<view class='invalid'>
+			<view class='card-invalid' wx:for='{{card}}'>
+			<view class='invalid-left'>
+				<text class='invalid-price'>{{item.voucher}}</text>
+				<text class='invalid-yuan'>元</text>
+			</view>
+			<view class='card-right'>
+				<text class='invalid-man'>满{{item.least}}使用</text>
+				<text class='invalid-data'>{{item.start}}至{{item.end}}</text>
+			</view>
+		</view>
+		</view>
+</block>
+
+
+

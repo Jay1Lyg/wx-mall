@@ -27,7 +27,7 @@
 </view>
 <view class='classification'>
 	<scroll-view scroll-x="true" class="tab-h" >
-		<view class='classes' wx:for='{{classes}}'>
+		<view class='classes' wx:for='{{classes}}' bindtap='classification'>
 			<image src='{{item.image}}'></image>
 			<text>{{item.text}}</text>
 		</view>

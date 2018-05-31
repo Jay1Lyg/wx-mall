@@ -1,1 +1,115 @@
 /* pages/cardvoucher/cardvoucher.wxss */
+.card-tab{
+	width: 100%;
+	height: 90rpx;
+	display: flex;
+	border-bottom: 2rpx solid #f2f2f2
+}
+.card-new{
+	flex: 1;
+	text-align: center;
+	line-height: 90rpx;
+	font-size: 32rpx;
+}
+.card-old{
+	flex: 1;
+	text-align: center;
+	line-height: 90rpx;
+	font-size: 32rpx;
+}
+.discount{
+	/* padding: 0 30rpx; */
+}
+
+
+.card-detail{
+	display: inline-block;
+	width: 336rpx;
+	height: 142rpx;
+	margin: 15rpx 2%;
+	background: linear-gradient(to right, #f29945 , #e33d8f);
+	border-radius: 20rpx;
+}
+.card-invalid{
+	display: inline-block;
+	width: 336rpx;
+	height: 142rpx;
+	margin: 15rpx 2%;
+	background: white;
+	border: 1rpx solid #d7d7d7;
+	border-radius: 20rpx;
+	
+}
+.card-left{
+	float: left;
+	width: 106rpx;
+	height: 142rpx;
+	border-right: 2rpx dashed white;
+	text-align: center
+}
+.invalid-left{
+	float: left;
+	width: 106rpx;
+	height: 142rpx;
+	border-right: 2rpx dashed #a1a1a1;
+	text-align: center
+}
+.card-right{
+	float: left;
+	width: 228rpx;
+	height: 142rpx;
+	text-align: center
+}
+.card-price{
+	margin-top: 5rpx;
+	font-size: 60rpx;
+	height: 55rpx;
+	color: white;
+	display: block
+}
+.invalid-price{
+	margin-top: 5rpx;
+	font-size: 60rpx;
+	height: 55rpx;
+	color: #a1a1a1;
+	display: block
+}
+.yuan{
+	font-size: 28rpx;
+	color: white;
+
+}
+.invalid-yuan{
+	font-size: 28rpx;
+	color: #a1a1a1;
+
+}
+.card-man{
+	margin-top: 20rpx;
+	font-size: 28rpx;
+	height: 55rpx;
+	color: white;
+	display: block
+}
+.data{
+	font-size: 18rpx;
+	color: white;
+
+}
+.invalid-man{
+	margin-top: 20rpx;
+	font-size: 28rpx;
+	height: 55rpx;
+	color: #a1a1a1;
+	display: block
+}
+.invalid-data{
+	font-size: 18rpx;
+	color: #a1a1a1;
+
+}
+
+.active{
+	border-bottom: 2rpx solid #e7242a;
+	color: #e7242a;
+}

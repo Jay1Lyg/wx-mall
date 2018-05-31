@@ -1,8 +1,13 @@
 {
   "pages": [
-    "pages/submitorder/submitorder",
-    "pages/home/home",
+		"pages/home/home",
+		"pages/orders/orders",
+		"pages/template/template",
+    
+    
     "pages/index/index",
+    "pages/selectaddrress/selectaddress",
+    "pages/submitorder/submitorder",
     "pages/logs/logs",
     "pages/allproducts/allproducts",
     "pages/shoppingcart/shoppingcart",
@@ -12,10 +17,9 @@
     "pages/productdetails/productdetails",
     "pages/address/address",
     "pages/cardvoucher/cardvoucher",
-    "pages/orders/orders",
     "pages/searchresult/searchresult",
-    "pages/addaddress/addaddress",
-    "pages/selectaddrress/selectaddress"
+    "pages/addaddress/addaddress"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

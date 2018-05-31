@@ -1,2 +1,9 @@
 <!--pages/classification/classification.wxml-->
-<text>pages/classification/classification.wxml</text>
+<import src="../template/template.wxml"/> 
+
+<template is='tab' data='{{...tab}}'></template>
+<template is='tab' data='{{...tab}}'></template>
+<view class='recommend-detail'>
+		<template is='detail' data='{{recommend}}'>
+		</template>
+</view>

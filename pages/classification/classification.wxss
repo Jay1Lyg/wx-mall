@@ -1,1 +1,2 @@
 /* pages/classification/classification.wxss */
+@import "../template/template.wxss";

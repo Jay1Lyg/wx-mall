@@ -8,14 +8,14 @@
 		<text class=''>{{item.text}}</text>
 	</view>
 </view>
-<view class='card'>
+<view class='card' bindtap='card'>
 	<view class='card-image'>
 		<image src='../../image/youhui.png'></image>
 	</view>
 	<text class='card-text'>优惠卡券</text>
 	<text class='card-right'>></text>
 </view>
-<view class='card'>
+<view class='card' bindtap='address'>
 	<view class='card-image'>
 		<image src='../../image/dizhi.png'></image>
 	</view>

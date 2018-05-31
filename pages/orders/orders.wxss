@@ -1,1 +1,20 @@
 /* pages/orders/orders.wxss */
+@import "../template/template.wxss";
+.tab{
+	width: 100%;
+	height: 90rpx;
+	display: flex;
+	border-bottom: 10rpx solid #f2f2f2;
+}
+.tab-text{
+	text-align: center;
+	font-size: 32rpx;
+	flex: 1;
+	display: block;
+	line-height: 90rpx;
+	/* font-family: '黑体' */
+}
+.active{
+	color: #e7242a;
+	border-bottom: 1rpx solid #e7242a;
+}
