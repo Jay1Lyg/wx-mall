@@ -14,23 +14,23 @@
 </view>
 <view class='goodslist' wx:for='{{goodes}}' >
 	<view class='goodslist-sel'>
-		<image bindtap='select' class=" {{item.active?'active':''}}" src='../../image/sel.png' data-id='{{item.id}}'></image>
-		<image bindtap='select' class=" {{item.active?'':'active'}}" src='../../image/nosel.png' data-id='{{item.id}}'></image>
+		<image bindtap='select' class=" {{item.active?'active':''}}" src='../../image/sel.png' data-id='{{item.shoppingCart_id}}'></image>
+		<image bindtap='select' class=" {{item.active?'':'active'}}" src='../../image/nosel.png' data-id='{{item.shoppingCart_id}}'></image>
 	</view>
 	<view class='goodslist-image'>
-		<image src='{{item.image}}'></image>
+		<image src='{{item.iconUrl}}'></image>
 	</view>
 	<view class='good-info'>
 		<view class='goodname'>
-			<text>{{item.name}}</text>
+			<text>{{item.title}}</text>
 		</view>
 		<view class='guige'>
-			<text class='guigename'>口味：{{item.guige}}</text>
-			<text class='goodnum'>{{item.num}}</text>
+			<text class='guigename'>口味：{{item.taste}}</text>
+			<text class='goodnum'>{{item.number}}</text>
 		</view>
 		<view class='price-edit'>
 			<text class='price'>￥{{item.price}}</text>
-			<text class='edit'>编辑</text>
+			<text class='edit' bindtap='edit' data-production_id='{{item.production_id}}' data-shoppingCart_id  ='{{item.shoppingCart_id  }}' >编辑</text>
 		</view>
 	</view>
 </view>
@@ -38,9 +38,41 @@
 
 <view class='submit'>
 	<view class='submit-price'>
-		共计：<text >1232</text>
+		共计：<text >{{allprice}}</text>
 	</view>
 	<view class='submit-btn'>
 		<text>提交订单</text>
 	</view>
 </view>
+
+
+<view class="{{addcart?'':'addcart'}} canshu">
+	<image class='quxiao' src='../../image/quxiao.png' bindtap='quxiao'></image>
+	<view style='height:880rpx'>
+		<view class='pro-info'>
+			<view class='pro-image'>
+				<image src='{{initial.iconUrl}}'></image>
+			</view>
+			<view class='pro-num'>
+				<text class='pro-price'>￥{{initial.price}}</text>
+				<text class='pro-stock'>库存：{{initial.inventory}}</text>
+			</view>
+		</view>
+		<view class='specification-detail' wx:for='{{product}}'>
+			<text class='specification-detail-text'>口味</text>
+			<view class='specification-detailes' >
+				<text wx:for='{{productspecification}}'  data-id='{{item.specification_id}}'  class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.taste_name}}</text>
+			</view>
+		</view>
+		<view class='buy-num'>
+			<text  class='specification-detail-text'>数量</text>
+			<view class='add-sub'>
+				<text class='add' bindtap='sub'>-</text>
+				<text class='number'>{{initial.number}}</text>
+				<text class='sub' bindtap='add'>+</text>
+			</view>
+		</view>
+	</view>
+	<button type='warn' bindtap='addcartsure'>加入购物车</button>
+</view>
+<view class="{{overfy?'overfy':''}}"></view>

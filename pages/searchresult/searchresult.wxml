@@ -1,27 +1,27 @@
 <!--pages/searchresult/searchresult.wxml-->
 <view class='search-input'>
-	<input class='inpue-detail' type='text' placeholder='请输入搜索内容'></input>
-	<text class='search-btn'>搜索</text>
+	<input class='inpue-detail' type='text' placeholder='请输入搜索内容' bindblur="searchInput"></input>
+	<text class='search-btn' bindtap='search'>搜索</text>
 </view>
 <view class='tab'>
-	<view class="tabdetail ">
+	<view class="tabdetail " bindtap='price'>
 		<text>价格</text>
 	</view>
-	<view class="tabdetail borders ">
+	<view class="tabdetail borders " bindtap='sales'>
 		<text>销量</text>
 	</view>
-	<view class="tabdetail {{active?'active':''}}">
+	<view class="tabdetail {{active?'active':''}}" bindtap='newproduct'>
 		<text>上新</text>
 	</view>
 </view>
 <view class='recommend-detail'>
 		<view wx:for='{{recommend}}' class='produce-detail' bindtap='producedetail'>
-			<image src='{{item.image}}'></image>
+			<image src='{{item.iconUrl}}'></image>
 			<view class='produce-text'>
-				<text class='produce-name'>{{item.text}}</text>
+				<text class='produce-name'>{{item.title}}</text>
 				<view class='produce-info'>
-					<text class='produce-price'>￥{{item.price}}</text>
-					<text class='produce-pay'>{{item.price}}付款</text>
+					<text class='produce-price'>￥{{item.present_price}}</text>
+					<text class='produce-pay'>{{item.purchaseNumber}}付款</text>
 				</view>
 			</view>
 		</view>

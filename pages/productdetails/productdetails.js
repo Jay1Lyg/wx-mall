@@ -1,4 +1,5 @@
 // pages/productdetails/productdetails.js
+const App = getApp();
 Page({
 
   /**
@@ -6,44 +7,12 @@ Page({
    */
   data: {
 		product:{
-				image: '../../image/14.png',
-				detail:'计划GV深V不打算大V大GV深V不打算大V大GV深V不打算大V大GV深V不打算大V大GV深V不打算大V大GV深V不打算大V大GV深V不打算大V大V'
+			
 			},
 		productspecification:[
-			{
-				id:"0",
-				name:'麻辣',
-				image:'../../image/15.png',
-				surplus:122,
-				price:44,
-				Originalprice:60
-			},
-			{
-				id: "1",
-				name: '五香',
-				image: '../../image/14.png',
-				surplus: 12,
-				price:45,
-				Originalprice: 60
-			},
-			{
-				id: "2",
-				name: '原味',
-				image: '../../image/15.png',
-				surplus: 152,
-				price:55,
-				Originalprice: 60
-			}
+		
 		],
 		initial:{
-			
-		id: "0",
-		name: '麻辣',
-		image: '../../image/15.png',
-		surplus: 122,
-		price: 44,
-		Originalprice: 60
-	
 		},
 		share:'../../image/share.png',
 		display: true	,
@@ -52,6 +21,14 @@ Page({
 		canshu:0,
 		buynumber:1,
 		specification:0,
+		addcart:0,
+		evaluation:[
+			{text:'全部',active:1}, 
+			{ text: '有图', active: 0}, 
+			{ text: '好评', active: 0},
+			{ text: '中评', active: 0} , 
+			{ text: '差评', active: 0} ,
+		]
 		
 		
   },
@@ -64,6 +41,7 @@ Page({
 	},
 	evaluate: function (res) {
 		var that = this;
+		// that.evaluation(1, that.data.product.production_id, '/program/p_searchProductionEvaluation')
 		that.setData({
 			display: false,
 			displayred:false
@@ -71,6 +49,41 @@ Page({
 	},
 	selectassess:function(res){
 		console.log(res)
+		
+		var that=this;
+		var index = res.target.dataset.index;
+		for (var i = 0; i < that.data.evaluation.length;i++){
+			that.data.evaluation[i].active=0;
+			if (i===index){
+				// console.log(i)
+				var selectindex=i;
+				that.setData({
+					selectindex: selectindex
+				})
+				that.data.evaluation[i].active = 1;
+				// return selectindex
+			}
+			that.setData({
+				evaluation: that.data.evaluation
+			})
+		};
+		if (that.data.selectindex===0){
+			console.log(0)
+			that.evaluation(1, that.data.product.production_id, '/program/p_searchProductionEvaluation')
+		} else if (that.data.selectindex === 1){
+			console.log(1)
+			that.evaluation(1, that.data.product.production_id, '/program/p_searchProductionEvaluationWithPicture')
+		} else if (that.data.selectindex === 2) {
+			that.goodredevaluation(1, that.data.product.production_id, 1,'/program/p_searchProductionEvaluationByGrade')
+		} else if (that.data.selectindex === 3) {
+			console.log(3)
+			that.goodredevaluation(1, that.data.product.production_id, 2, '/program/p_searchProductionEvaluationByGrade')
+		}else{
+			console.log(4)
+			that.goodredevaluation(1, that.data.product.production_id, 3, '/program/p_searchProductionEvaluationByGrade')
+		}
+
+		 
 	},
 	// 参数
 	checkparameter:function(res){
@@ -95,6 +108,109 @@ Page({
 		that.setData({
 			buynumber:num
 		})
+	},
+	addcart:function(res){
+		var that=this;
+		var that = this;
+		that.setData({
+			addcart: 1,
+			overfy: 1
+		})
+	},
+	addcartsure: function (res) {
+		var that = this;
+		var specification_id = that.data.initial.specification_id;
+		wx.getStorage({
+			key: 'customer_id',
+			success: function (res) {
+				console.log(res.data)
+				that.setData({
+					customer_id: res.data,
+					
+				});
+				console.log(that.data.product.specifications)
+				if (that.data.product.specifications.length==0){
+					console.log(98989898989898)
+					wx.request({
+						url: App.globalData.urlHead + '/program/p_addProductionToShoppingCart',
+						method: 'POST',
+						data: {
+							production_id: that.data.product.production_id,
+							customer_id: res.data,
+							number: that.data.buynumber,
+							specification_id: specification_id
+						},
+						header: {
+							'content-type': 'application/json' // 默认值
+						},
+						success: function (res) {
+							// console.log('领取优惠')
+							console.log(res);
+							that.setData({
+								addcart: 0,
+								overfy: 0
+							});
+							wx.showToast({
+								title: '添加成功',
+								icon: 'success',
+								duration: 2000
+							})
+						}
+					})
+				}else{
+					if (specification_id===''){
+						wx.showToast({
+							title: '请选择规格',
+							icon: 'none',
+							duration: 2000
+						})
+					}else{
+						console.log('98989jkghgjhhjjhjh898989898')
+						wx.request({
+							url: App.globalData.urlHead + '/program/p_addProductionToShoppingCart',
+							method: 'POST',
+							data: {
+								production_id: that.data.product.production_id,
+								customer_id: res.data,
+								number: that.data.buynumber,
+								specification_id: specification_id
+							},
+							header: {
+								'content-type': 'application/json' // 默认值
+							},
+							success: function (res) {
+								// console.log('领取优惠')
+								console.log(res);
+								that.setData({
+									addcart: 0,
+									overfy: 0
+								});
+								wx.showToast({
+									title: '添加成功',
+									icon: 'success',
+									duration: 2000
+								})
+							}
+						})
+					}
+				}
+				
+			}
+		})
+	
+		// wx.navigateTo({ url: '../submitorder/submitorder' })
+		console.log(that.data.initial)
+		
+		
+			// c
+	},
+	quxiao:function(){
+		var that=this;
+		that.setData({
+			addcart: 0,
+			overfy: 0,
+			specification:0
+		});
 	},
 	sub: function (res) {
 		var that = this;
@@ -124,12 +240,13 @@ Page({
 		 that.setData({
 			 productspecification: that.data.productspecification
 		 })
+		 console.log(that.data.productspecification)
 		 for (var i = 0; i < that.data.productspecification.length;i++){
-			 if (that.data.productspecification[i].id===id){
+			 if (that.data.productspecification[i].specification_id===id){
 				 console.log(i);
 				 that.data.productspecification[i].active = 1;
 				 var select = that.data.productspecification[i];
-				 console.log(that.data.productspecification)
+				 console.log(select)
 				 that.setData({
 					 initial: select,
 					 productspecification: that.data.productspecification
@@ -155,11 +272,86 @@ Page({
 		wx.navigateTo({ url: '../submitorder/submitorder' })
 		console.log(that.data.initial)
 	},
+	evaluation: function (page, productionid,url ){
+		var that = this;
+		wx.request({
+			url: App.globalData.urlHead + url,
+			method: 'POST',
+			data: {
+				productionid: productionid,
+				page:page
+			},
+			header: {
+				'content-type': 'application/json' // 默认值
+			},
+			success: function (res) {
+				// console.log('领取优惠')
+				console.log(res);
+				that.setData({
+					product: res.data,
+					goodParameter: res.data.goodParameters
+				})
+				// console.log(that.data.parameterContent)
+			}
+		})
+	},
+	goodredevaluation: function (page, productionid,index, url) {
+		var that = this;
+		wx.request({
+			url: App.globalData.urlHead + url,
+			method: 'POST',
+			data: {
+				productionid: productionid,
+				page: page,
+				index:index
+			},
+			header: {
+				'content-type': 'application/json' // 默认值
+			},
+			success: function (res) {
+				// console.log('领取优惠')
+				console.log(res);
+				that.setData({
+					product: res.data,
+					goodParameter: res.data.goodParameters
+				})
+				// console.log(that.data.parameterContent)
+			}
+		})
+	},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+		console.log(options);
+		var that=this;
+		wx.request({
+			url: App.globalData.urlHead + '/program/p_searchProductionDetail',
+			method: 'POST',
+			data: {
+				productionid: options.production_id,
+			},
+			header: {
+				'content-type': 'application/json' // 默认值
+			},
+			success: function (res) {
+				// console.log('领取优惠')
+				console.log(res);
+				 var initial={
+					 iconUrl: res.data.production_images[0],
+					 price : res.data.present_price,
+					 inventory: res.data.totalInventory,
+					 specification_id:''
+				 }
+			that.setData({
+				product:res.data,
+				goodParameter: res.data.goodParameters,
+				productspecification: res.data.specifications,
+				initial: initial
+			})
+			// console.log(that.data.parameterContent)
+			}
+		})
   },
 
   /**

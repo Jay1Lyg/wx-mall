@@ -1,18 +1,18 @@
 <!--pages/search/search.wxml-->
 <view class='search-input'>
-	<input class='inpue-detail' type='text' placeholder='请输入搜索内容'></input>
+	<input class='inpue-detail' type='text' placeholder='请输入搜索内容' bindblur="searchInput" ></input>
 	<text class='search-btn' bindtap='search'>搜索</text>
 </view>
 <view class='historical-search'>
 	<text class='historical-text'>历史搜索</text>
 	<view>
-	<text class='detail' wx:for='{{historical}}'>{{item}}</text>
+	<text class='detail' wx:for='{{historical}}' bindtap='historical' data-value='{{item}}'>{{item}}</text>
 	</view>
 </view>
-<view class='historical-search'>
+<!-- <view class='historical-search'>
 	<text class='historical-text'>热门搜索</text>
 	<view>
 	<text class='detail' wx:for='{{historical}}'>{{item}}</text>
 	</view>
-</view>
+</view> -->
 

@@ -1,10 +1,9 @@
 {
   "pages": [
-		"pages/home/home",
-		"pages/orders/orders",
-		"pages/template/template",
-    
-    
+    "pages/home/home",
+    "pages/addevaluation/addevaluation",
+    "pages/orders/orders",
+    "pages/template/template",
     "pages/index/index",
     "pages/selectaddrress/selectaddress",
     "pages/submitorder/submitorder",
@@ -18,8 +17,8 @@
     "pages/address/address",
     "pages/cardvoucher/cardvoucher",
     "pages/searchresult/searchresult",
-    "pages/addaddress/addaddress"
-    
+    "pages/addaddress/addaddress",
+    "pages/classresults/classresults"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,6 +37,12 @@
         "iconPath": "image/home.png",
         "selectedIconPath": "image/homeselect.png",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/classification/classification",
+        "iconPath": "image/class.png",
+        "selectedIconPath": "image/classsel.png",
+        "text": "分类"
       },
       {
         "pagePath": "pages/allproducts/allproducts",

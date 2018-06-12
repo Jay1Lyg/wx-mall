@@ -1,9 +1,22 @@
 <!--pages/classification/classification.wxml-->
-<import src="../template/template.wxml"/> 
 
-<template is='tab' data='{{...tab}}'></template>
-<template is='tab' data='{{...tab}}'></template>
-<view class='recommend-detail'>
-		<template is='detail' data='{{recommend}}'>
-		</template>
+<view class='ification'wx:for='{{list}}'>
+	<view class='ification-image'>
+		<image src='{{item.iconUrl}}'></image>
+	</view>
+	<view class='ification-text'>
+		<view class='firstclass'>
+			<text>{{item.firstclassName}}</text>
+		</view>
+		<view class='secondclass'>
+			<view class='secondclass-text' id='{{item.firstclass_id}}' bindtap='allclass'>
+				<text>全部</text>
+			</view>
+			<view class='secondclass-text' wx:for='{{item.secondclass}}' id='{{item.secondclass_id}}' bindtap='secondclass'>
+				<text>{{item.secondclassName}}</text>
+			</view>
+		</view>
+	</view>
 </view>
+
+

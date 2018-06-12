@@ -26,13 +26,13 @@
 </template>
 <template name='detail'>
 
-		<view wx:for='{{recommend}}' class='produce-detail' bindtap='producedetail'>
-			<image src='{{item.image}}'></image>
+		<view wx:for='{{recommend}}' class='produce-detail' bindtap='producedetail' data-id='{{item.production_id}}'>
+			<image src='{{item.iconUrl}}'></image>
 			<view class='produce-text'>
-				<text class='produce-name'>{{item.text}}</text>
+				<text class='produce-name'>{{item.title}}</text>
 				<view class='produce-info'>
-					<text class='produce-price'>￥{{item.price}}</text>
-					<text class='produce-pay'>{{item.price}}付款</text>
+					<text class='produce-price'>￥{{item.present_price}}</text>
+					<text class='produce-pay'>{{item.purchaseNumber}}付款</text>
 				</view>
 			</view>
 		</view>
@@ -41,7 +41,17 @@
 <template name='tab'>
 	<view >
     <scroll-view scroll-x="true" class="tab-h" >
-        <view wx:for='{{list}}'  class="tab-item {{item.active?'active':''}}" data-id='{{item.id}}' bindtap='qiehuan' >{{item.tabdetail}}</view>
+        <view wx:for='{{list}}'  class="tab-item {{item.active?'active':''}}" data-id='{{item.firstclass_id}}' bindtap='qiehuan' >{{item.firstclassName}}</view>
+    </scroll-view>
+</view>
+
+</template>
+
+
+<template name='second'>
+	<view >
+    <scroll-view scroll-x="true" class="tab-h" >
+        <view wx:for='{{secondclass}}'  class="tab-item {{item.active?'secondactive':''}}" data-id='{{item.secondclass_id}}' bindtap='secondqiehuan' >{{item.secondclassName}}</view>
     </scroll-view>
 </view>
 

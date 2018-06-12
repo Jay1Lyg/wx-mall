@@ -1,0 +1,30 @@
+<!--pages/addevaluation/addevaluation.wxml-->
+<view class='evaluation' wx:for='{{evaluationinfo}}'>
+	<view class='produce'>
+		<view class='produce-image'>
+			<image src='{{item.produce}}'></image>
+		</view>
+		<view class='upload'>
+			<view class='upload-img' wx:for='{{item.upload}}' wx:for-item="image">
+				<image class='image' src='{{image}}'></image>
+				<image class='delimage' data-index='{{index}}' data-id="{{item.id}}" src='../../image/uploaddel.png' bindtap='delimage'></image>
+			</view>
+			
+		</view>
+		<view class='upload-btn'>
+				<image bindtap='uploadimage' src='../../image/uploadimg.png' data-id="{{item.id}}"></image>
+		</view>
+	</view>
+	<view>
+		<view class="textarea-wrp">
+			<textarea value='{{item.evaluation}}' bindblur="bindTextAreaBlur" data-id='{{item.id}}'/>
+		</view>
+	</view>
+	<view class='evaluation-image'>
+		<view class='evaluationdetail' wx:for='{{item.active}}' wx:for-item="ping">
+			<image bindtap='switchevaluation' class="detail {{ping.active?'active':''}}" src='{{ping.image}}' data-index='{{ping.id}}' data-id='{{item.id}}'></image>
+			<image bindtap='switchevaluation' class="detail {{ping.active?'':'active'}}" src='{{ping.redimage}}' data-id='{{item.id}}' data-index='{{ping.id}}'></image>
+			<text>{{ping.text}}</text>
+		</view>
+	</view>
+</view>

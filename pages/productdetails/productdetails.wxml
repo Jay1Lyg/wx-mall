@@ -1,21 +1,17 @@
 
-
-
-
-
 <view class='produce-info'>
-	<image class='produce-image' src='{{product.image}}'></image>
+	<image class='produce-image' src='{{product.production_images[0]}}'></image>
 	<view class='produce-detail'>
-		<text >{{product.detail}}</text>
+		<text >{{product.title}}</text>
 		<image src='{{share}}'></image>
 	</view>
 	<view class='price'>
 		<view class='price-detail'>
-			 <text class='now-price'>价格</text>
-			 <text class='ago-price'>价格</text>
+			 <text class='now-price'>价格:{{product.present_price}}</text>
+			 <text class='ago-price'>价格:{{product.original_price}}</text>
 		</view>
-	  <text class='freight'>快递：</text>
-	  <text class='sales'>销量：</text>
+	  <text class='freight'>快递：{{product.freight}}</text>
+	  <text class='sales'>销量：{{product.purchaseNumber}}</text>
 	</view>
 	<view style='background:#f2f2f2;height:20rpx;'></view>
 </view>
@@ -33,22 +29,20 @@
 		<text class="{{displayred?'':'displayred'}}" bindtap="evaluate">评价信息</text>
 	</view>
 	<block wx:if='{{display}}'>
-			<view >2</view>
+			<view wx:for='{{product.describe_images}}' >
+				<image style='width:100%'  src='{{item}}'></image>
+			</view>
 	</block>
 	<block  wx:else='{{display}}'>
 			<view class='assess'>
 				<view class='assess-tab'>
-					<text class='brcolor bordererd' bindtap='selectassess'>全部</text>
-					<text class='bordererd' bindtap='selectassess'>有图</text>
-					<text class='bordererd' bindtap='selectassess'>好评</text>
-					<text class='bordererd' bindtap='selectassess'>中评</text>
-					<text class='bordererd' bindtap='selectassess'>差评</text>
+					<text wx:for='{{evaluation}}' data-index='{{index}}' class="bordererd {{item.active?'brcolor':''}}" bindtap='selectassess'>{{item.text}}</text>
 				</view>
 				<view style='width:100%;height:10rpx;background:#f2f2f2;margin-bottom:10rpx;'></view>
 				<view class='assess-detail'>
 					<view class='userinfo'>
 						<view class='userimage'>
-							<image src='../../image/14.png'></image>
+							<image src=''></image>
 						</view>
 						<view class='username'>
 							<text class='nickname'>大主宰</text>
@@ -58,7 +52,7 @@
 					<text class='taste'>口味：</text>
 					<text class='userassess'>jhdvjkshajhgaslkghsljkgh</text>
 					<view class='loadimage'>
-						 <image src='../../image/14.png'></image>
+						 <!-- <image src='../../image/14.png'></image> -->
 						<!-- <image src='../../image/14.png'></image>
 						<image src='../../image/14.png'></image>
 						<image src='../../image/14.png'></image>  -->
@@ -78,7 +72,7 @@
 		<image src='../../image/kefu.png'></image>
 		<text>客服</text>
 	</view>
-	<view class='add-cart'>
+	<view class='add-cart' bindtap='addcart'>
 		<text>加入购物车</text>
 	</view>
 	<view class='buy' bindtap='buy'>
@@ -89,9 +83,9 @@
 <!-- 参数样式 -->
 <view class="canshu {{overfy?'':'can-display'}}" >
  <view style='height:880rpx'>
-	  <view class='canshu-detail'>
-			<text class='canshuname'>品牌</text>
-			<text class='description'>健康韩国喜欢</text>
+	  <view class='canshu-detail' wx:for='{{goodParameter}}'>
+			<text class='canshuname'>{{item.parameterName}}</text>
+			<text class='description'>{{item.parameterContent}}</text>
  		</view>
  </view>
 
@@ -99,21 +93,22 @@
 </view>
 <!--规格  -->
 <view class="{{specification?'':'specification'}} canshu">
+	<image class='quxiao' src='../../image/quxiao.png' bindtap='quxiao'></image>
 	<view style='height:880rpx'>
 		<view class='pro-info'>
 			<view class='pro-image'>
-				<image src='{{initial.image}}'></image>
+				<image src='{{product.production_images[0]}}'></image>
 			</view>
 			<view class='pro-num'>
-				<text class='pro-price'>￥{{initial.price}}</text>
-				<text class='pro-oldprice'>￥{{initial.Originalprice}}</text>
-				<text class='pro-stock'>库存：{{initial.surplus}}</text>
+				<text class='pro-price'>￥{{product.present_price}}</text>
+				<text class='pro-oldprice'>￥{{product.original_price}}</text>
+				<text class='pro-stock'>库存：{{product.totalInventory}}</text>
 			</view>
 		</view>
 		<view class='specification-detail'>
-			<text class='specification-detail-text'>口味</text>
+		<text class='specification-detail-text'>口味</text>
 			<view class='specification-detailes' >
-				<text wx:for='{{productspecification}}'  data-id='{{item.id}}' data-active='{{item.active}}' class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.name}}</text>
+				<text wx:for='{{productspecification}}'  data-id='{{item.specification_id}}' data-active='{{item.active}}' class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.taste_name}}</text>
 			</view>
 		</view>
 		<view class='buy-num'>
@@ -126,5 +121,36 @@
 		</view>
 	</view>
 	<button type='warn' bindtap='buysure'>确定购买</button>
+</view>
+
+<!-- ?加购物车 -->
+<view class="{{addcart?'':'addcart'}} canshu">
+  <image class='quxiao' src='../../image/quxiao.png' bindtap='quxiao'></image>
+	<view style='height:880rpx'>
+		<view class='pro-info'>
+			<view class='pro-image'>
+				<image src='{{initial.iconUrl}}'></image>
+			</view>
+			<view class='pro-num'>
+				<text class='pro-price'>￥{{initial.price}}</text>
+				<text class='pro-stock'>库存：{{initial.inventory}}</text>
+			</view>
+		</view>
+		<view class='specification-detail' wx:for='{{product.specifications}}'>
+			<text class='specification-detail-text'>口味</text>
+			<view class='specification-detailes' >
+				<text wx:for='{{productspecification}}'  data-id='{{item.specification_id}}' data-active='{{item.active}}' class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.taste_name}}</text>
+			</view>
+		</view>
+		<view class='buy-num'>
+			<text  class='specification-detail-text'>数量</text>
+			<view class='add-sub'>
+				<text class='add' bindtap='sub'>-</text>
+				<text class='number'>{{buynumber}}</text>
+				<text class='sub' bindtap='add'>+</text>
+			</view>
+		</view>
+	</view>
+	<button type='warn' bindtap='addcartsure'>加入购物车</button>
 </view>
 <view class="{{overfy?'overfy':''}}"></view>

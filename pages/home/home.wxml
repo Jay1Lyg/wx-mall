@@ -1,6 +1,6 @@
 <view class='topbar'>
 	<view class='topbar-view offer'>
-		<text>{{offer}}</text>
+		<text>全场满{{offer}}包邮</text>
 	</view>
 	<view class='topbar-view search' bindtap='search'>
 		<view class='search-image'>
@@ -20,29 +20,29 @@
 			autoplay="true" interval="2000" duration="500" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#ffffff">
 			<block wx:for="{{image}}" wx:key="*this">
 				<swiper-item>
-					<image src='{{item}}' class="swiper-item"></image>
+						<image src='{{item.images}}' class="swiper-item" bindtap='producedetail' data-id='{{item.production_id}}'></image>
 				</swiper-item>
 			</block>
 		</swiper>
 </view>
-<view class='classification'>
+<!-- <view class='classification'>
 	<scroll-view scroll-x="true" class="tab-h" >
-		<view class='classes' wx:for='{{classes}}' bindtap='classification'>
-			<image src='{{item.image}}'></image>
-			<text>{{item.text}}</text>
+		<view class='classes' wx:for='{{classes}}' bindtap='classification' data-firstclassid='{{item.firstclass_id}}'>
+			<image src='{{item.iconUrl}}'></image>
+			<text>{{item.firstclass_Name}}</text>
 		</view>
 	</scroll-view>
-</view>
+</view> -->
 <view class='card'>
 	 <scroll-view scroll-x="true" class="tab-card" >
-		<view class='card-detail' wx:for='{{card}}'>
+		<view class='card-detail' wx:for='{{card}}' bindtap='receivecard' data-id='{{item.customer_id}}'>
 			<view class='card-left'>
-				<text class='card-price'>{{item.voucher}}</text>
+				<text class='card-price'>{{item.reduce_money}}</text>
 				<text class='yuan'>元</text>
 			</view>
 			<view class='card-right'>
-				<text class='card-man'>满{{item.least}}使用</text>
-				<text class='data'>{{item.start}}至{{item.end}}</text>
+				<text class='card-man'>满{{item.full_money}}使用</text>
+				<text class='data'>{{item.start_time}}至{{item.end_time}}</text>
 			</view>
 		</view>
 	</scroll-view>
@@ -53,16 +53,19 @@
 		<text >店长推荐</text>
 	</view>
 	<view class='recommend-detail'>
-		<view wx:for='{{recommend}}' class='produce-detail' bindtap='producedetail'>
-			<image src='{{item.image}}'></image>
+		<view wx:for='{{recommend}}' class='produce-detail' bindtap='producedetail' data-id='{{item.production_id}}'>
+			<image src='{{item.iconUrl}}'></image>
 			<view class='produce-text'>
-				<text class='produce-name'>{{item.text}}</text>
+				<text class='produce-name'>{{item.title}}</text>
 				<view class='produce-info'>
-					<text class='produce-price'>￥{{item.price}}</text>
-					<text class='produce-pay'>{{item.price}}付款</text>
+					<text class='produce-price'>￥{{item.present_price}}</text>
+					<text class='produce-pay'>{{item.purchaseNumber}}付款</text>
 				</view>
 			</view>
 		</view>
 	</view>
 	<view style='clear:both'></view>
 </view>
+
+
+<button open-type="getUserInfo">5555</button>

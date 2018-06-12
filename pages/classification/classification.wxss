@@ -1,2 +1,40 @@
 /* pages/classification/classification.wxss */
-@import "../template/template.wxss";
+.ification{
+	width: 100%;
+	display: flex;
+	border-bottom: 1rpx solid #a1a1a1
+}
+.ification-image{
+	flex: 1;
+	text-align: center
+}
+.ification-image image{
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 50%;
+	margin: 30rpx auto;
+
+}
+.ification-text{
+	flex: 4
+}
+.firstclass{
+	margin: 20rpx 0 0 0;
+	line-height: 120rpx;
+	font-size: 30rpx
+}
+.secondclass{
+	width: 100%
+}
+.secondclass-text{
+	float: left;
+	width: 23%;
+	border-right: 1rpx solid #a1a1a1;
+	margin: 30rpx 0;
+	text-align: center
+}
+.secondclass-text text{
+	font-size: 28rpx;
+	color: #a1a1a1;
+
+}

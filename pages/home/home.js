@@ -1,48 +1,19 @@
 // pages/home/home.js
+const App = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		offer:'全场满199包邮',
+		offer:'',
 		message:20,
 		image:[
-			'../../image/red.png',
-			'../../image/red.png',
-			'../../image/red.png',
-			'../../image/red.png',
-			'../../image/red.png',
+		
 		],
 		classes:[
-			{
-				image:'../../image/14.png',
-				text:'坚果'
-			},
-			{
-				image: '../../image/15.png',
-				text: '坚果'
-			},
-			{
-				image: '../../image/15.png',
-				text: '坚果'
-			},
-			{
-				image: '../../image/15.png',
-				text: '坚果'
-			},
-			{
-				image: '../../image/15.png',
-				text: '坚果'
-			},
-			{
-				image: '../../image/15.png',
-				text: '坚果'
-			},
-			{
-				image: '../../image/15.png',
-				text: '坚果'
-			},
+		
+		
 			{
 				image: '../../image/15.png',
 				text: '坚果'
@@ -50,26 +21,6 @@ Page({
 		],
 		
 			recommend:[
-			{
-				image: '../../image/14.png',
-				text: '尽快改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了个',
-				price:100
-			},
-			{
-				image: '../../image/14.png',
-				text: '尽快改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了个',
-				price: 100
-			},
-			{
-				image: '../../image/14.png',
-				text: '尽快改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了个',
-				price: 100
-			},
-			{
-				image: '../../image/14.png',
-				text: '尽快改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了改变了个',
-				price: 100
-			},
 		
 		],
 		card:[
@@ -85,18 +36,7 @@ Page({
 				start: '2018.03.21',
 				end: '2018.06.21'
 			},
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
+		
 		]
 		
   },
@@ -104,16 +44,118 @@ Page({
 		wx.navigateTo({ url: '../search/search' })
 	},
 	producedetail:function(res) {
-		wx.navigateTo({ url: '../productdetails/productdetails' })
+		console.log(res)
+		var production_id=res.currentTarget.dataset.id;
+		wx.navigateTo({ url: '../productdetails/productdetails?production_id=' + production_id })
 	},
-	classification:function(res){
-		wx.navigateTo({ url: '../classification/classification' })
+	classification:function(e){
+		var firstclass_id = e.currentTarget.dataset.firstclassid;
+		console.log(e)
+		console.log(firstclass_id)
+		wx.navigateTo({ url: `../classification/classification?firstclass_id=${firstclass_id}` })
+	},
+	receivecard:function(e){
+		console.log(e)
+		var coupon_id=e.target.dataset.id;
+		var that=this;
+		wx.request({
+			url: App.globalData.urlHead + '/program/p_receiveCoupons',
+			method: 'POST',
+			data: {
+				customer_id: that.data.customer_id,
+				coupon_id: coupon_id,
+				
+			},
+			header: {
+				'content-type': 'application/json' // 默认值
+			},
+			success: function (res) {
+				console.log('领取优惠')
+				console.log(res);
+				wx.showToast({
+					title: '领取成功',
+					icon: 'success',
+					duration: 2000
+				})
+				
+			}
+		})
+
 	},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+		console.log(App.globalData.urlHead)
+		var userInfo = wx.getStorageSync('userInfo');
+		wx.login({
+			success: res => {
+				// 发送 res.code 到后台换取 openId, sessionKey, unionId
+				console.log(res)
+			
+				wx.request({
+					url: App.globalData.urlHead + '/program/p_getUserInfo',
+					method: 'POST',
+					data: {
+						code: res.code,
+						appid: App.globalData.appid,
+						appSecret: App.globalData.appSecret,
+						nickname: userInfo.nickName,
+						headImage: userInfo.avatarUrl,
+					},
+					header: {
+						'content-type': 'application/json' // 默认值
+					},
+					success: function (res) {
+						console.log(555878787878)
+						console.log(res);
+						that.setData({
+							customer_id: res.data.customer_id
+						})
+						wx.setStorage({
+							key: "customer_id",
+							data: res.data.customer_id
+						})
+
+
+					}
+				})
+			}
+		})
+		console.log(userInfo)
+		var that=this;
+		wx.request({
+			url: App.globalData.urlHead + '/program/p_searchHomePageInfo',
+			method: 'POST',
+			data: {
+				appid: App.globalData.appid,
+			},
+			header: {
+				'content-type': 'application/json' // 默认值
+			},
+			success: function (res) {
+				console.log(555)
+				console.log(res.data);
+				for (var i = 0; i < res.data.coupon.length;i++){
+				var start=	res.data.coupon[i].start_time.slice(0,10)
+				var end=	res.data.coupon[i].end_time.slice(0,10)
+				res.data.coupon[i].start_time=start;
+				res.data.coupon[i].end_time=end;
+					that.setData({
+						card: res.data.coupon,
+					})
+				};
+				console.log(res.data.coupon)
+				that.setData({
+					
+					image: res.data.carouselProduction,
+					offer: res.data.activity_setting[0].freeShiping_num,
+					classes:res.data.category,
+					recommend: res.data.hotSellGoods,
+				})
+			}
+		});
+		
   },
 
   /**
