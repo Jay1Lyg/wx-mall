@@ -32,6 +32,10 @@ Page({
 		
 		
   },
+	gocart:function(e){
+		console.log(e)
+		wx.reLaunch({ url: '../shoppingcart/shoppingcart' })
+	},
 	detail:function(res){
 		var that=this;
 		that.setData({

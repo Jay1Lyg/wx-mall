@@ -1,15 +1,15 @@
 <!--pages/shoppingcart/shoppingcart.wxml-->
 <view class='goodList-info'>
 	<view class='goods-num'>
-		<text>共5件商品</text>
+		<text>共{{goodnum}}件商品</text>
 	</view>
 	<view class='goodsallselect'>
 		<image bindtap='allselect' class="{{allselect?'allselect':''}}" src='../../image/sel.png'></image>
 		<image bindtap='allselect' class="{{allselect?'':'allselect'}}" src='../../image/nosel.png'></image>
-		<text bindtap='allselect'>全选</text>
+		<text bindtap='allselect' class="allselect-text {{allselect?'allselect-text_black':''}}">全选</text>
 	</view>
 	<view class='goodsdeletd'>
-		<text>删除</text>
+		<text bindtap='deletegood' class="goodsdeletd-text {{allselect?'allselect-text_black':''}}">删除</text>
 	</view>
 </view>
 <view class='goodslist' wx:for='{{goodes}}' >
@@ -61,7 +61,7 @@
 		<view class='specification-detail' wx:for='{{product}}'>
 			<text class='specification-detail-text'>口味</text>
 			<view class='specification-detailes' >
-				<text wx:for='{{productspecification}}'  data-id='{{item.specification_id}}'  class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.taste_name}}</text>
+				<text   data-id='{{item.specification_id}}'  class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.taste_name}}</text>
 			</view>
 		</view>
 		<view class='buy-num'>
@@ -73,6 +73,6 @@
 			</view>
 		</view>
 	</view>
-	<button type='warn' bindtap='addcartsure'>加入购物车</button>
+	<button type='warn' bindtap='addcartsure'>确定</button>
 </view>
 <view class="{{overfy?'overfy':''}}"></view>

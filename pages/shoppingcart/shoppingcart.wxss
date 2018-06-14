@@ -20,11 +20,14 @@
 	text-align: right;
 	margin-right: 84rpx;
 }
-.goodsallselect text{
+.allselect-text{
 	line-height: 100rpx;
 	color: #a1a1a1;
 	font-size: 30rpx;
 	margin-left: 10rpx;
+}
+.allselect-text_black{
+	color: #434343
 }
 .goodsallselect image{
 	width: 30rpx;
@@ -34,10 +37,13 @@
 .goodsdeletd{
 	flex: 1
 }
-.goodsdeletd text{
+.goodsdeletd-text{
 	line-height: 100rpx;
 	color: #a1a1a1;
 	font-size: 30rpx
+}
+.allselect-text_black{
+	color: #434343
 }
 .allselect{
 	display: none
@@ -120,6 +126,10 @@
 	font-size: 28rpx;
 	flex: 1;
 	text-align: right;
+
+}
+.edit:hover{
+	color: #434343;
 }
 
 

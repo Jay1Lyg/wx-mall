@@ -1,4 +1,11 @@
 
+<movable-area>
+  <movable-view x="300" y="40" direction="all">
+		<view class='fuview' bindtap='gocart'>
+			<image src='../../image/fucart.png'></image>
+		</view>
+	</movable-view>
+
 <view class='produce-info'>
 	<image class='produce-image' src='{{product.production_images[0]}}'></image>
 	<view class='produce-detail'>
@@ -66,7 +73,7 @@
 	</block>
 	
 </view>
-
+</movable-area>
  <view class='foot'>
 	<view class='service'>
 		<image src='../../image/kefu.png'></image>
@@ -154,3 +161,4 @@
 	<button type='warn' bindtap='addcartsure'>加入购物车</button>
 </view>
 <view class="{{overfy?'overfy':''}}"></view>
+
