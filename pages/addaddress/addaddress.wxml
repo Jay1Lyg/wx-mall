@@ -2,11 +2,11 @@
 <view>
 	<view class='address'>
 		<text class='address-text'>联系人</text>
-		<input class='address-input' type='text' placeholder='姓名'></input>
+		<input class='address-input' type='text' placeholder='姓名' bindblur="inputname" value='{{contact}}'></input>
 	</view>
 		<view class='address'>
 		<text class='address-text'>联系电话</text>
-		<input class='address-input' type='text' placeholder='填写联系电话'></input>
+		<input class='address-input' type='text' placeholder='填写联系电话' bindblur="inputtel" value='{{contactNumber}}'></input>
 	</view>
 		<view class='address'>
 		<text class='address-text'>所在地区</text>
@@ -18,9 +18,9 @@
 	</view>
 		<view class='address'>
 		<text class='address-text'>详细地址</text>
-		<input class='address-input' type='text' placeholder='填写详细地址'></input>
+		<input class='address-input' type='text' placeholder='填写详细地址' bindblur="detailaddress" value='{{detailedAddress}}'></input>
 	</view>
 </view>
 
 
-<button type='warn' class='btn'>保存</button>
+<button type='warn' class='btn' bindtap='saveaddress'>保存</button>

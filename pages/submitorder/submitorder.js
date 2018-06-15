@@ -34,7 +34,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+		console.log(2);
+		var that=this;
+		var value = wx.getStorageSync('orders');
+		// var allprice=0;
+		// for (var i of value.production){
+		// 	console.log(i)
+		// 	allprice += (i.number*i.price)
+		// }
+		// console.log(allprice)
+		
+		if (value) {
+			console.log(value)
+			that.setData({
+				goodes: value.production,
+				freight: value.freight,
+				price: value.totalPrice,
+				coupon: value.coupon
+			})
+		}
   },
 
   /**

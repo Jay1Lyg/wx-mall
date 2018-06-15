@@ -1,19 +1,21 @@
+
+
 <!--pages/submitorder/submitorder.wxml-->
 <view class='addaddress' bindtap='addaddress'>
-	<text class='addtext'>添加收货地址</text>
+	<text class='addtext'>选择收货地址</text>
 	<text class='addda'>></text>
 </view>
 <view class='goodslist' wx:for='{{goodes}}' >
 	<view class='goodslist-image'>
-		<image src='{{item.image}}'></image>
+		<image src='{{item.iconUrl}}'></image>
 	</view>
 	<view class='good-info'>
 		<view class='goodname'>
-			<text>{{item.name}}</text>
+			<text>{{item.title}}</text>
 		</view>
 		<view class='guige'>
-			<text class='guigename'>口味：{{item.guige}}</text>
-			<text class='goodnum'>{{item.num}}</text>
+			<text class='guigename'>口味：{{item.taste}}</text>
+			<text class='goodnum'>数量：{{item.number}}</text>
 		</view>
 		<view class='price-edit'>
 			<text class='price'>￥{{item.price}}</text>
@@ -23,7 +25,12 @@
 <view style='border-bottom:10rpx solid #f2f2f2'></view>
 <view class='addaddress' style='border-bottom:2rpx solid #f2f2f2'>
 	<text class='addtext'>运费</text>
-	<text class='addda'>></text>
+	<text class='addda'>{{freight}}</text>
+</view>
+<view class='addaddress' style='border-bottom:2rpx solid #f2f2f2'>
+	<text class='addtext'>优惠券</text>
+	<text class="addda {{coupon?'':'coupon'}}">满{{coupon.full_money}}减{{coupon.reduce_money}}</text>
+	<text class="addda {{coupon?'coupon':''}}">无优惠券可用</text>
 </view>
 
 <view class='addaddress' style='margin-bottom:110rpx'>
@@ -35,7 +42,7 @@
 
 <view class='submit'>
 	<view class='submit-price'>
-		共计：<text >1232</text>
+		共计：<text >{{price}}</text>
 	</view>
 	<view class='submit-btn'>
 		<text>提交订单</text>

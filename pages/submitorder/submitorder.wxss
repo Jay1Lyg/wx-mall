@@ -19,6 +19,7 @@
 	line-height: 90rpx;
 	text-align: right;
 	margin-right: 30rpx;
+	font-size: 28rpx;
 }
 .beizhu{
 	flex: 1;
@@ -143,4 +144,9 @@
 	font-size: 40rpx;
 	background: #e7242a;
 	color: white;
+}
+
+
+.coupon{
+	display: none
 }

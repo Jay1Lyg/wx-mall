@@ -1,3 +1,4 @@
+
 // pages/search/search.js
 const App = getApp();
 Page({

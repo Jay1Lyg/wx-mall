@@ -112,8 +112,9 @@
 				<text class='pro-stock'>库存：{{product.totalInventory}}</text>
 			</view>
 		</view>
-		<view class='specification-detail'>
-		<text class='specification-detail-text'>口味</text>
+		
+		<view class='specification-detail' wx:for='{{product.specifications}}'>
+			<text class='specification-detail-text'>口味</text>
 			<view class='specification-detailes' >
 				<text wx:for='{{productspecification}}'  data-id='{{item.specification_id}}' data-active='{{item.active}}' class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.taste_name}}</text>
 			</view>

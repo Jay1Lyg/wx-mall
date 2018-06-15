@@ -273,7 +273,87 @@ Page({
 			specification: 0,
 			overfy: 0
 		});
-		wx.navigateTo({ url: '../submitorder/submitorder' })
+		var specification_id = that.data.initial.specification_id;
+		wx.getStorage({
+			key: 'customer_id',
+			success: function (res) {
+				console.log(res.data)
+				that.setData({
+					customer_id: res.data,
+
+				});
+				console.log(that.data.product.specifications)
+				if (that.data.product.specifications.length == 0) {
+					console.log(98989898989898)
+					wx.request({
+						url: App.globalData.urlHead + '/program/p_generatePreSubmitOrderInfo',
+						method: 'POST',
+						data: {
+							appid: App.globalData.appid,
+							customer_id: res.data,
+							production:[
+								{
+									number: that.data.buynumber,
+									production_id: that.data.product.production_id,
+									specification_id: specification_id,
+									customer_id: res.data
+								},
+								
+							]
+						},
+						header: {
+							'content-type': 'application/json' // 默认值
+						},
+						success: function (res) {
+							// console.log('领取优惠')
+							console.log(res);
+							wx.setStorageSync('orders', res.data)
+							wx.navigateTo({ url: '../submitorder/submitorder' })
+						}
+					})
+				} else {
+					if (specification_id === '') {
+						wx.showToast({
+							title: '请选择规格',
+							icon: 'none',
+							duration: 2000
+						})
+					} else {
+						console.log('98989jkghgjhhjjhjh898989898')
+						wx.request({
+							url: App.globalData.urlHead + '/program/p_generatePreSubmitOrderInfo',
+							method: 'POST',
+							data: {
+								appid: App.globalData.appid,
+								customer_id: res.data,
+								production: [
+									{
+										number: that.data.buynumber,
+										production_id: that.data.product.production_id,
+										specification_id: specification_id,
+										customer_id: res.data
+									},
+								
+
+								]
+							},
+							header: {
+								'content-type': 'application/json' // 默认值
+							},
+							success: function (res) {
+								// console.log('领取优惠')
+								console.log(res);
+								wx.setStorageSync('orders', res.data)
+								wx.navigateTo({ url: '../submitorder/submitorder' })
+							
+							}
+						})
+					}
+				}
+
+			}
+		})
+	
 		console.log(that.data.initial)
 	},
 	evaluation: function (page, productionid,url ){
