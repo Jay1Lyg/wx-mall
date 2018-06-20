@@ -1,0 +1,20 @@
+<!--pages/selectaddrress/selectaddress.wxml-->
+<view class='seladdress' wx:for='{{address}}'>
+	<view class='selimage'>
+		<image data-id='{{item.address_id}}' bindtap='select' class="{{item.active?'active':''}}" src='../../image/sel.png'></image>
+		<image  data-id='{{item.address_id}}' bindtap='select' class="{{item.active?'':'active'}}" src='../../image/nosel.png'></image>
+	</view>
+	<view class='adderss-info'>
+		<text class='detailed'>{{item.provinceName}}{{item.cityName}}{{item.areaName}}{{item.detailedAddress}}</text>
+		<view class='consignee'>
+			<text class='name'>{{item.contact}}</text>
+			<text class='telphone'>{{item.contactNumber}}</text>
+			<view class='operation'>
+				<image bindtap='editaddress' class='editaddress' src='../../image/edit.png' data-id='{{item.address_id}}'></image>
+				<image bindtap='deladdress' class='deladdress' src='../../image/del.png'   data-id='{{item.address_id}}'></image>
+			</view>
+		</view>
+	</view>
+</view>
+
+<button class='btn' type='warn' bindtap='address'>添加新地址</button>

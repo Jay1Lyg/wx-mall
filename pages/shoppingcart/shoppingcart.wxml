@@ -40,7 +40,7 @@
 	<view class='submit-price'>
 		共计：<text >{{allprice}}</text>
 	</view>
-	<view class='submit-btn'>
+	<view class='submit-btn' bindtap='buy'>
 		<text>提交订单</text>
 	</view>
 </view>

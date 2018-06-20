@@ -43,7 +43,7 @@ Page({
 		
   },
 	address:function(e){
-		wx.navigateTo({ url: '../selectaddrress/selectaddress' })
+		wx.navigateTo({ url: '../selectaddress/selectaddress' })
 	},
 	card:function(e){
 		wx.navigateTo({ url: '../cardvoucher/cardvoucher' })

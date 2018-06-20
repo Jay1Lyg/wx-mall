@@ -5,6 +5,7 @@ Page({
   /**
    * 页面的初始数据
    */
+	
   data: {
 		offer:'',
 		message:20,
@@ -40,6 +41,8 @@ Page({
 		]
 		
   },
+
+
 	search:function(res){
 		wx.navigateTo({ url: '../search/search' })
 	},
@@ -115,6 +118,10 @@ Page({
 						wx.setStorage({
 							key: "customer_id",
 							data: res.data.customer_id
+						})
+						wx.setStorage({
+							key: "openid",
+							data: res.data.openid 
 						})
 
 

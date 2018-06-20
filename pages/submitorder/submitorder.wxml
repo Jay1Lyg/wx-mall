@@ -1,9 +1,17 @@
-
-
 <!--pages/submitorder/submitorder.wxml-->
-<view class='addaddress' bindtap='addaddress'>
+<view class="addaddress {{address?'addressdisplay':''}}" bindtap='addaddress'>
 	<text class='addtext'>选择收货地址</text>
 	<text class='addda'>></text>
+</view>
+<view class="seladdress {{address?'':'addressdisplay'}}" >
+	
+	<view class='adderss-info' style='margin-left:30rpx;'>
+		<text class='detailed'>{{address.provinceName}}{{address.cityName}}{{address.areaName}}{{address.detailedAddress}}</text>
+		<view class='consignee'>
+			<text class='name'>{{address.contact}}</text>
+			<text class='telphone'>{{address.contactNumber}}</text>
+		</view>
+	</view>
 </view>
 <view class='goodslist' wx:for='{{goodes}}' >
 	<view class='goodslist-image'>
@@ -36,7 +44,7 @@
 <view class='addaddress' style='margin-bottom:110rpx'>
 	<text class='beizhu'>备注</text>
 	<view class='addbeizhu'>
-		<input type='text' placeholder='点击填写备注'></input>
+		<input type='text' placeholder='点击填写备注' bindblur="remark"></input>
 	</view>
 </view>
 
@@ -44,7 +52,7 @@
 	<view class='submit-price'>
 		共计：<text >{{price}}</text>
 	</view>
-	<view class='submit-btn'>
+	<view class='submit-btn' bindtap='submit'>
 		<text>提交订单</text>
 	</view>
 </view>

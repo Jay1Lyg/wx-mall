@@ -464,6 +464,63 @@ Page({
 		// wx.navigateTo({ url: '../submitorder/submitorder' })
 		
 	},
+	buy:function(res){
+		var that=this;
+		console.log(that.data.goodes);
+		var goodes = that.data.goodes;
+		var arr=[];
+		
+		for(var i=0;i<goodes.length;i++){
+			if (goodes[i].active===1){
+				console.log(goodes[i]);
+				var specification_id = 'specification_id' in goodes[i] ? goodes[i].specification_id:'';
+				var b={
+					number: goodes[i].number,
+					production_id: goodes[i].production_id,
+					specification_id: specification_id,
+					customer_id: that.data.customer_id
+				}
+				console.log(b);
+				arr.push(b)
+			}
+		}
+		console.log(arr)
+		var p = 0;
+		for (var i of that.data.goodes) {
+			
+			p += i.active;
+			console.log(i)
+
+		}
+		if(p===0){
+			wx.showToast({
+				title: '请选择一个商品',
+				icon: 'none',
+				duration: 2000
+			})
+
+		}else{
+			wx.request({
+				url: App.globalData.urlHead + '/program/p_generatePreSubmitOrderInfo',
+				method: 'POST',
+				data: {
+					appid: App.globalData.appid,
+					customer_id: that.data.customer_id,
+					production: arr
+				},
+				header: {
+					'content-type': 'application/json' // 默认值
+				},
+				success: function (res) {
+					// console.log('领取优惠')
+					console.log(res);
+					wx.setStorageSync('orders', res.data)
+					wx.navigateTo({ url: '../submitorder/submitorder' })
+				}
+			})
+		}
+		
+	},
   /**
    * 生命周期函数--监听页面加载
    */
