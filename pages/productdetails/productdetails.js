@@ -269,10 +269,7 @@ Page({
 	},
 	buysure:function(res){
 		var that = this;
-		that.setData({
-			specification: 0,
-			overfy: 0
-		});
+		
 		var specification_id = that.data.initial.specification_id;
 		wx.getStorage({
 			key: 'customer_id',
@@ -307,6 +304,10 @@ Page({
 						success: function (res) {
 							// console.log('领取优惠')
 							console.log(res);
+							that.setData({
+								specification: 0,
+								overfy: 0
+							});
 							wx.setStorageSync('orders', res.data)
 							wx.navigateTo({ url: '../submitorder/submitorder' })
 						}
@@ -331,7 +332,7 @@ Page({
 										number: that.data.buynumber,
 										production_id: that.data.product.production_id,
 										specification_id: specification_id,
-										customer_id: res.data
+										customer_id: res.datam
 									},
 								
 
@@ -343,6 +344,10 @@ Page({
 							success: function (res) {
 								// console.log('领取优惠')
 								console.log(res);
+								that.setData({
+									specification: 0,
+									overfy: 0
+								});
 								wx.setStorageSync('orders', res.data)
 								wx.navigateTo({ url: '../submitorder/submitorder' })
 							
@@ -421,6 +426,9 @@ Page({
 			success: function (res) {
 				// console.log('领取优惠')
 				console.log(res);
+				wx.setNavigationBarTitle({
+					title: res.data.title//页面标题为路由参数
+				})
 				 var initial={
 					 iconUrl: res.data.production_images[0],
 					 price : res.data.present_price,

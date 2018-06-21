@@ -1,9 +1,9 @@
 <!--pages/cardvoucher/cardvoucher.wxml-->
 <view class='card-tab'>
- <view class="card-new {{display?'active':''}}" bindtap='switchtab'>
+ <view class="card-new {{display?'active':''}}" bindtap='switchtabing'>
 		<text>优惠卡券</text>
  </view>
-  <view class="card-old {{display?'':'active'}}" bindtap='switchtab'>
+  <view class="card-old {{display?'':'active'}}" bindtap='switchtabed'>
 		<text>失效卡券</text>
  </view>
 </view>
@@ -12,26 +12,26 @@
 	<view class='discount'>
 		<view class='card-detail' wx:for='{{card}}'>
 			<view class='card-left'>
-				<text class='card-price'>{{item.voucher}}</text>
+				<text class='card-price'>{{item.reduce_money}}</text>
 				<text class='yuan'>元</text>
 			</view>
 			<view class='card-right'>
-				<text class='card-man'>满{{item.least}}使用</text>
-				<text class='data'>{{item.start}}至{{item.end}}</text>
+				<text class='card-man'>满{{item.full_money}}使用</text>
+				<text class='data'>{{item.start_time}}至{{item.end_time}}</text>
 			</view>
 		</view>
 	</view>
 </block>
 <block wx:else='{{display}}'>
 		<view class='invalid'>
-			<view class='card-invalid' wx:for='{{card}}'>
+			<view class='card-invalid' wx:for='{{carded}}'>
 			<view class='invalid-left'>
-				<text class='invalid-price'>{{item.voucher}}</text>
+				<text class='invalid-price'>{{item.reduce_money}}</text>
 				<text class='invalid-yuan'>元</text>
 			</view>
 			<view class='card-right'>
-				<text class='invalid-man'>满{{item.least}}使用</text>
-				<text class='invalid-data'>{{item.start}}至{{item.end}}</text>
+				<text class='invalid-man'>满{{item.full_money}}使用</text>
+				<text class='invalid-data'>{{item.start_time}}至{{item.end_time}}</text>
 			</view>
 		</view>
 		</view>

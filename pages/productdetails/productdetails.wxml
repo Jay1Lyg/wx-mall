@@ -15,7 +15,7 @@
 	<view class='price'>
 		<view class='price-detail'>
 			 <text class='now-price'>价格:{{product.present_price}}</text>
-			 <text class='ago-price'>价格:{{product.original_price}}</text>
+			 <text class='ago-price'>{{product.original_price}}</text>
 		</view>
 	  <text class='freight'>快递：{{product.freight}}</text>
 	  <text class='sales'>销量：{{product.purchaseNumber}}</text>
@@ -113,7 +113,7 @@
 			</view>
 		</view>
 		
-		<view class='specification-detail' wx:for='{{product.specifications}}'>
+		<view class='specification-detail' >
 			<text class='specification-detail-text'>口味</text>
 			<view class='specification-detailes' >
 				<text wx:for='{{productspecification}}'  data-id='{{item.specification_id}}' data-active='{{item.active}}' class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.taste_name}}</text>
@@ -144,7 +144,7 @@
 				<text class='pro-stock'>库存：{{initial.inventory}}</text>
 			</view>
 		</view>
-		<view class='specification-detail' wx:for='{{product.specifications}}'>
+		<view class='specification-detail' >
 			<text class='specification-detail-text'>口味</text>
 			<view class='specification-detailes' >
 				<text wx:for='{{productspecification}}'  data-id='{{item.specification_id}}' data-active='{{item.active}}' class="specification-detailes-text {{item.active? 'specification-detailes-text-red' : '' }}" bindtap='selectpecification'>{{item.taste_name}}</text>

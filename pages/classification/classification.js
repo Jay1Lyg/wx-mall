@@ -155,45 +155,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-		var that=this;
-		var arr = [];
-		var secondarr=[];
-		for (let j of that.data.secondclass) {
-			console.log(j);
-			arr.push(j.active);
-			if (j.active === 1) {
-				console.log(j);
-				var secondclass_id = j.secondclass_id
-			}
-			if (arr[0] === 0 && new Set(arr).size === 1) {
-				console.log(66666666666666666666666)
-				var havefirst=true;
-			}
 
-		};
-		for (let i of that.data.list) {
-			console.log(i);
-			secondarr.push(i.active);
-			if(i.active===1){
-				console.log(i);
-				var firstclass_id=i.firstclass_id
-			}
-			if (secondarr[0] === 0 && new Set(secondarr).size === 1) {
-				console.log(66);
-				var havefirst = false;
-
-			}
-
-		}
-		if (!havefirst){
-			var fpage=	++that.data.fpage;
-			console.log(fpage)
-			that.secondclass(fpage, firstclass_id, '')
-		}else{
-			var cpage = ++that.data.cpage;
-			console.log(cpage)
-			that.secondclass(cpage, '', secondclass_id)
-		}
 		// console.log(2)
   },
 

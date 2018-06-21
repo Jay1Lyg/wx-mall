@@ -20,11 +20,12 @@ Page({
 		
 		if (options.index==='1'){
 			console.log(4)
-			this.firstclass(this.data.page, id, '')
+			// this.firstclass(this.data.page, id, '')
 			this.setData({
 				firstclass_id:id,
 				secondclass_id:''
 		})
+			this.firstclass('/program/p_searchProductionbyClassId', this.data.page, id,'' )
 		}else{
 			console.log(5)
 			this.setData({
@@ -80,6 +81,7 @@ Page({
 	},
 	firstclass: function (url,page, firstclass_id, secondclass_id) {
 		var that = this;
+
 
 		wx.request({
 			url: App.globalData.urlHead + url,
