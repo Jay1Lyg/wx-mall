@@ -46,8 +46,6 @@ App({
     
   },
 	globalData: {
-		urlHead: 'https://www.kaishi.net.cn',
-		appid : 'wxc1ffb8680e926eb5',
-		appSecret: 'f2ade2dfeffb61671bb8233c18990f2b'
+		
 	},
 })
