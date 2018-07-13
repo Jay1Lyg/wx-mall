@@ -46,6 +46,11 @@ Page({
 									wx.navigateTo({ url: '../submitorder/submitorder?address_id=' + addressid})
 								}else{
 									console.log(88888)
+									wx.showToast({
+										title: '选择成功',
+										icon: 'success',
+										duration: 2000
+									})
 								}
 							}
 						})
@@ -59,6 +64,7 @@ Page({
 	editaddress:function(res){
 		console.log(res)
 		var address_id=res.target.dataset.id;
+	
 		wx.navigateTo({ url: '../addaddress/addaddress?address_id='+address_id })
 	},
 	deladdress:function(res){
@@ -94,8 +100,14 @@ Page({
 	},
 	address:function(res){
 		console.log(res)
+		var that=this;
 		console.log('添加地址');
-		wx.navigateTo({ url: '../addaddress/addaddress' })
+		if (that.data.select){
+			wx.navigateTo({ url: '../addaddress/addaddress?select=' + that.data.select })
+		}else{
+			wx.navigateTo({ url: '../addaddress/addaddress' })
+		}
+		
 	},
   /**
    * 生命周期函数--监听页面加载

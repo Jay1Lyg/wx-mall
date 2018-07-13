@@ -138,7 +138,12 @@ Page({
 					},
 					success: function (res) {
 						console.log(res)
-						wx.navigateTo({ url: '../selectaddress/selectaddress' })
+						if (that.data.select){
+							wx.navigateTo({ url: '../selectaddress/selectaddress?select=1' })
+						}else{
+							wx.navigateTo({ url: '../selectaddress/selectaddress' })
+						}
+						
 					}
 				})
 			}
@@ -152,7 +157,15 @@ Page({
   onLoad: function (options) {
 		var that = this;
 		console.log(options)
-		
+		if (options.select){
+			that.setData({
+				select: options.select
+			})
+		}else{
+			that.setData({
+				select: false
+			})
+		}
 		if(options.address_id){
 			that.setData({
 				address_id: options.address_id

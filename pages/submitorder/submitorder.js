@@ -25,10 +25,14 @@ Page({
 				num: 1,
 				price: 123
 			},
-		]
+		],
+		orderid:''
   },
 	addaddress:function(res){
 		var that=this;
+		wx.navigateTo({ url: '../selectaddress/selectaddress?select=1' })
+	},
+	reviseaddress:function(res){
 		wx.navigateTo({ url: '../selectaddress/selectaddress?select=1' })
 	},
   /**
@@ -38,8 +42,33 @@ Page({
 		console.log(2);
 		var that=this;
 		console.log(options);
+		var orderid ='orderid';
 		if (JSON.stringify(options)==='{}' ){
 			console.log(4545455)
+			var value = wx.getStorageSync('orders');
+			if (value) {
+				console.log(value)
+				for (var i = 0; i < value.production.length; i++) {
+
+					var d = {
+						number: value.production[i].number,
+						production_id: value.production[i].production_id,
+						specification_id: value.production[i].specification_id,
+						price: value.production[i].price
+					}
+					console.log(d)
+				}
+				that.setData({
+					goodes: value.production,
+					freight: value.freight,
+					price: value.totalPrice,
+					coupon: value.coupon,
+					address: value.address,
+					activity_id: value.activity_id
+				})
+			};
+			
+		} else if (orderid in options){
 			var value = wx.getStorageSync('orders');
 			if (value) {
 				console.log(value)
@@ -58,10 +87,12 @@ Page({
 					price: value.totalPrice,
 					coupon: value.coupon,
 					address: value.address,
-					activity_id: value.activity_id
+					activity_id: value.activity_id,
+					orderid: options.orderid
 				})
 			};
 			
+			console.log(that.data.orderid)
 		}else{
 			console.log(9899)
 			var value = wx.getStorageSync('orders');
@@ -132,19 +163,32 @@ Page({
 						success: function (res) {
 							console.log(res);
 							var goodes = that.data.goodes;
+							console.log(goodes)
 							var arr = [];
+							console.log(typeof arr)
 							for (var i = 0; i < goodes.length; i++) {
 								var specification_id = 'specification_id' in goodes[i] ? goodes[i].specification_id : '';
+								var shoppingCartId = 'shoppingCart_id' in goodes[i] ? goodes[i].shoppingCartId : '';
+								
 								var b = {
 									number: goodes[i].number,
 									production_id: goodes[i].production_id,
 									specification_id: specification_id,
-
+									price: goodes[i].price,
+									shoppingCartId: shoppingCartId,
+											
 								}
+								console.log(b)
+								console.log(typeof b);
 								arr.push(b)
 
 							}
-							console.log(arr)
+							console.log(arr);
+							console.log(typeof arr);
+							let arr2 = Array.from(arr);
+							console.log(arr2);
+							console.log(typeof arr2);
+							
 							var out_trade_no = res.data.out_trade_no;
 							var timeStamp = res.data.timeStamp + "";
 							var prepay_id = 'prepay_id=' + res.data.prepay_id;
@@ -154,18 +198,10 @@ Page({
 							var coupon_id = that.data.coupon ? that.data.coupon : '';
 							var activity_id = that.data.activity_id ? that.data.activity_id : '';
 							var remark = that.data.remark ? that.data.remark : '';
-							var data = {
-								address_id: that.data.address.address_id,
-								customer_id: that.data.customer_id,
-								coupon_id: coupon_id,
-								activity_id: activity_id,
-								remark: remark,
-								orderNumber: out_trade_no,
-								order_status: 2,
-								totalAmount: that.data.price,
-								production: arr
-							};
-							console.log(data)
+							var order_id = that.data.orderid ? that.data.orderid : '';
+							var freight = parseInt(that.data.freight);
+							console.log(order_id)
+							// console.log(data)
 							wx.requestPayment({
 								'timeStamp': timeStamp,
 								'nonceStr': res.data.nonceStr,
@@ -175,6 +211,62 @@ Page({
 								'success': function (res) {
 									console.log(8989898);
 									console.log(res)
+									if (res.errMsg ==='requestPayment:ok'){
+										var data = {
+											address_id: that.data.address.address_id,
+											customer_id: that.data.customer_id,
+											coupon_id: coupon_id,
+											activity_id: activity_id,
+											remark: remark,
+											orderNumber: out_trade_no,
+											order_status: 2,
+											totalAmount: that.data.price,
+											order_id: order_id,
+											freight: freight,
+											production: JSON.stringify(arr)
+										};
+										console.log(data)
+										wx.request({
+											url: App.globalData.urlHead + '/program/p_generateOrder',
+											data: data,
+											method: 'POST',
+											header: {
+												'content-type': 'application/x-www-form-urlencoded;charset=utf-8' // 默认值
+											},
+											success: function (res) {
+												console.log('-------------------------------')
+												console.log(res);
+												console.log('-------------------------------')
+												wx.showToast({
+													title: '购买成功',
+													icon: 'success',
+													duration: 2000
+												})
+												wx.navigateTo({ url: `../orders/orders?index=0` })
+
+											}
+										})
+									}else{
+									
+									}
+									
+								},
+								'fail': function (res) {
+									console.log(res)
+									var data = {
+										address_id: that.data.address.address_id,
+										customer_id: that.data.customer_id,
+										coupon_id: coupon_id,
+										activity_id: activity_id,
+										remark: remark,
+										orderNumber: out_trade_no,
+										order_status: 1,
+										totalAmount: that.data.price,
+										order_id: order_id,
+										freight: freight,
+										production: JSON.stringify(arr)
+									};
+									console.log(data)
 									wx.request({
 										url: App.globalData.urlHead + '/program/p_generateOrder',
 										data: data,
@@ -186,13 +278,15 @@ Page({
 											console.log('-------------------------------')
 											console.log(res);
 											console.log('-------------------------------')
-
+											wx.showToast({
+												title: '购买失败',
+												icon: 'fail',
+												duration: 2000
+											})
+											wx.navigateTo({ url: `../orders/orders?index=1` })
 
 										}
 									})
-								},
-								'fail': function (res) {
-									console.log(res)
 								}
 							})
 						}

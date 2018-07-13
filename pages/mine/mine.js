@@ -11,32 +11,38 @@ Page({
 			{
 				image:'../../image/alldingdan.png',
 				text:'全部订单',
-				active:1
+				active:1,
+				id:0
 			},
 			{
 				image: '../../image/daifu.png',
 				text: '待付款',
-				active: 0
+				active: 0,
+				id: 1
 			},
 			{
 				image: '../../image/daifa.png',
 				text: '待发货',
-				active: 0
+				active: 0,
+				id: 2
 			},
 			{
 				image: '../../image/daishou.png',
 				text: '待收货',
-				active: 0
+				active: 0,
+				id: 3
 			},
 			{
 				image: '../../image/daiping.png',
-				text: '待评价',
-				active: 0
+				text: '售后单',
+				active: 0,
+				id: 4
 			},
 			{
 				image: '../../image/shouhou.png',
-				text: '售后单',
-				active: 0
+				text: '已完成',
+				active: 0,
+				id: 5
 			},
 	
 		]
@@ -47,6 +53,12 @@ Page({
 	},
 	card:function(e){
 		wx.navigateTo({ url: '../cardvoucher/cardvoucher' })
+	},
+	order:function(e){
+		console.log(e)
+		var index = e.target.dataset.index || e.currentTarget.dataset.index;
+		console.log(index)
+		wx.navigateTo({ url: '../orders/orders?index='+index })
 	},
   /**
    * 生命周期函数--监听页面加载

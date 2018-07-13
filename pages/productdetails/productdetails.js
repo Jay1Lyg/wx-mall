@@ -1,4 +1,9 @@
-// pages/productdetails/productdetails.js
+										  
+											
+											
+											
+											
+											// pages/productdetails/productdetails.js
 const App = getApp();
 Page({
 

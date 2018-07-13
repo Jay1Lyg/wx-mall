@@ -8,30 +8,7 @@ Page({
   data: {
 		display:1,
 		card: [
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
-			{
-				voucher: 10,
-				least: 188,
-				start: '2018.03.21',
-				end: '2018.06.21'
-			},
+			
 		]
   },
 	switchtabing:function(e){

@@ -1,0 +1,54 @@
+<view class="locationMsg">
+  <image src="../../image/acpColor.png"></image>
+  <view class="detailMsg">
+    <view>{{address.areaName}}{{address.cityName}}{{address.detailedAddress}}</view>
+    <text style="margin-right:100rpx;">{{address.contact}}</text>
+    <text>{{address.contactNumber}}</text>
+  </view>
+</view>
+<!-- <view class="wuliuDetail" style="height:{{height}}">
+  <image src="../../images/u2827.png"></image>
+  <view class="wuliuMsg">
+    <view style="margin-bottom:20rpx;">{{wulieMsg}}</view>
+    <view style="margin-bottom:20rpx;">{{wulieMsg}}</view>
+    <text class="wuliuTime">{{wuliuTime}}</text>
+  </view>
+  <view>
+    <image class="sanjiao" src="{{sanjiao}}" bindtap='bindOpen'style="transform:rotate(-90deg);display:{{Show}}"></image>
+    <image class="sanjiao" src="{{sanjiao}}" bindtap='bindDown'style="transform:rotate(0deg);display:{{Hide}}"></image>
+  </view>
+</view> -->
+<view class="leaveDetail">
+  <image src="../../image/u2060.png"></image>
+  <view class="leaveMsg">
+    <view>{{remark}}</view>
+  </view>
+</view>
+<view class="waitMsg">
+  <!-- <text style="color:red;margin-left:30rpx;">待发货</text> -->
+  <view style="float:right;margin-right:30rpx;">
+    <image src="../../image/u462.png" class="waitImg"></image>
+    <text class="gray">联系卖家</text>
+  </view>
+  <view class="waitDetail" wx:for='{{production}}'>
+    <image src="{{item.iconUrl}}" class="detailImg"></image>
+    <view class="detailMsg">
+      <view>{{item.title}}</view>
+      <view class="gray" style="margin-top:20rpx;">口味：{{item.taste}}</view>
+      <view style="line-height:60rpx;">
+        <text class="gray">X{{item.purchaseQuantity}}</text>
+        <text class="red" style="margin-left:370rpx;">￥{{item.price}}</text>
+      </view>
+    </view>
+		<text class="quitMoney" bindtap='quitbtn' data-orderProduction_id='{{item.orderProduction_id}}' data-production_id='{{item.production_id }}' data-price='{{item.price}}'>退款</text>
+  </view>
+  <view class="gray orderDetail">
+    <view>订单编号：{{orderNumber}}</view>
+    <view>创建时间：<text>{{placeOrder_time}}</text></view>
+  </view>
+</view>
+<view class="footer">
+  
+  <text class="longShop">延长收货</text>
+  <text class="remindShop">提醒收货</text>
+</view>

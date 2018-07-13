@@ -1,0 +1,5 @@
+<view class="welcomeBg">
+  <image src="../../image/welcome1.png"></image>
+  <button open-type="getUserInfo" bindtap='getUserInfo'>点击进入</button>
+  <image src="../../image/welcome2.png" class-="welcome2"></image>
+</view>

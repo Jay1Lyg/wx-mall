@@ -4,28 +4,29 @@
 	<text bindtap='ordertab' class="tab-text {{item.display?'active':''}}" wx:for='{{tab}}' data-id='{{item.active}}'>{{item.tab}}</text>
 </view>
 <block wx:if='{{active===0}}'> 
-	<template is='order' data="{{goodes}}">
-	</template>
+ <template is="{{goodes.length > 0 ? 'order' : 'no-goods'}}" data="{{goodes}}">
+ 	</template>
 </block> 
 <block wx:if='{{active===1}}'> 
-	<template is='order' data="{{goodes}}">
+	<template is="{{goodes.length > 0 ? 'ordertwo' : 'no-goods'}}" data="{{goodes}}">
 	</template>
-	1
+	
 </block> 
 <block wx:if='{{active===2}}'> 
-	<template is='order' data="{{goodes}}">
+	<template is="{{goodes.length > 0 ? 'orderthree' : 'no-goods'}}" data="{{goodes}}">
 	</template>
-	2
+	
 </block> 
 <block wx:if='{{active===3}}'> 
-	<template is='order' data="{{goodes}}">
+		<template is="{{goodes.length > 0 ? 'orderfour' : 'no-goods'}}" data="{{goodes}}">
 	</template>
 </block> 
 <block wx:if='{{active===4}}'> 
-	<template is='order' data="{{goodes}}">
+		<template is="{{goodes.length > 0 ? 'orderfive' : 'no-goods'}}" data="{{goodes}}">
 	</template>
 </block> 
 <block wx:if='{{active===5}}'> 
-	<template is='order' data="{{goodes}}">
+		<template is="{{goodes.length > 0 ? 'order' : 'no-goods'}}" data="{{goodes}}">
+		
 	</template>
 </block> 

@@ -4,7 +4,7 @@
 	width: 100%;
 	display: flex;
 	border-bottom: 10rpx solid #f2f2f2;
-
+	/* margin-bottom: 120rpx; */
 }
 .selimage{
 	flex: 1;

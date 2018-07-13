@@ -1,0 +1,91 @@
+.header{
+  width:750rpx;
+  height:410rpx;
+  background:red;
+}
+.header image{
+  width:100rpx;
+  height:100rpx;
+  margin:30rpx 320rpx;
+  margin-top:100rpx;
+}
+.waitMsg{
+  font-size:28rpx;
+  margin-top:30rpx;
+}
+.waitImg{
+  width:30rpx;
+  height:26rpx;
+  overflow:hidden;
+  margin-right:10rpx;
+}
+.gray{
+  color:#999;
+}
+.red{
+  color:red;
+}
+.waitDetail{
+  padding:30rpx 30rpx 10rpx 30rpx;
+  overflow:hidden;
+  box-sizing: border-box;
+  border-bottom:1px solid #ddd;
+}
+.detailImg{
+  width:162rpx;
+  height:162rpx;
+  border-radius:10rpx;
+  margin-right:30rpx;
+}
+.detailImg,
+.detailMsg{
+  float:left;
+}
+.detailMsg{
+  width:490rpx;
+}
+.orderDetail{
+  padding:30rpx 30rpx 0 30rpx;
+  box-sizing: border-box;
+  line-height:40rpx;
+  font-size:24rpx;
+  margin-bottom:100rpx;
+}
+.copy{
+  font-size:20rpx;
+  color:red;
+  padding:5rpx;
+  margin-left:20rpx;
+  border:1rpx solid red;
+  border-radius:8rpx;
+}
+.footer{
+  width:750rpx;
+  height:100rpx;
+  overflow:hidden;
+  position:fixed;
+  bottom:0;
+  background:#fff;
+  border-top:1rpx solid #ddd;
+}
+.remindShop{
+  width:200rpx;
+  height:60rpx;  
+  color:red;
+  float:right;
+  display:inline-block;
+  border:1px solid red;
+  font-size:26rpx;
+  border-radius:8rpx;
+  line-height:60rpx;
+  text-align:center;
+  margin:20rpx 30rpx 0 0;
+}
+.prompt{
+  font-size:28rpx;
+  color:#bcbcbc;
+  text-align:center;
+  width:500rpx;
+  height:100rpx;
+  margin:20rpx auto;
+}

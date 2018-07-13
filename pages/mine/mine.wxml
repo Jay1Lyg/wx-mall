@@ -3,7 +3,7 @@
 	<text>{{userInfo.nickName}}</text>
 </view>
 <view class='order'>
-	<view class="order-detail {{item.active?'active':''}}" wx:for='{{order}}'>
+	<view class="order-detail {{item.active?'active':''}}" wx:for='{{order}}' bindtap='order' data-index='{{item.id}}'>
 		<image src='{{item.image}}'></image>
 		<text class=''>{{item.text}}</text>
 	</view>

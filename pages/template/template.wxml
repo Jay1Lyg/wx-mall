@@ -1,25 +1,162 @@
 <!--pages/template/template.wxml-->
 <template name="order">	
-<view wx:for='{{goodes}}'>
-	<view class='goodslist'  >
+<view wx:for='{{goodes}}' wx:for-item="good">
+	<view class='goodslist'  wx:for='{{good.production}}' bindtap='orderdetail' data-orderid='{{good.order_id}}'>
 		<view class='goodslist-image'>
-			<image src='{{item.image}}'></image>
+			<image src='{{item.iconUrl}}'></image>
 		</view>
 		<view class='good-info'>
 			<view class='goodname'>
-				<text>{{item.name}}</text>
+				<text>{{item.title}}</text>
 			</view>
 			<view class='guige'>
-				<text class='guigename'>口味：{{item.guige}}</text>
-				<text class='goodnum'>{{item.num}}</text>
+				<text class='guigename'>口味：{{item.taste}}</text>
+				<text class='goodnum'>{{item.purchaseQuantity}}</text>
 			</view>
 			<view class='price-edit'>
 				<text class='price'>￥{{item.price}}</text>
 			</view>
 		</view>
 	</view>
-	<view>
-	hkjhl
+	<view class='orderinfo'>
+	  <view class='orderinfodetail'>
+			<text>{{good.order_status}}</text>
+		</view>
+		<view class='orderbtn'>
+			<text class='btnhui' bindtap='delorder' data-id='{{item.order_id}}'>删除订单</text>
+			<text class='btnred'>填写评价</text>
+		</view>
+	</view>
+</view>
+
+</template>
+
+
+<!-- 待付款 -->
+<template name="ordertwo">	
+<view wx:for='{{goodes}}' wx:for-item="good">
+	<view class='goodslist'  wx:for='{{good.production}}' bindtap='orderdetail' data-orderid='{{good.order_id}}'>
+		<view class='goodslist-image'>
+			<image src='{{item.iconUrl}}'></image>
+		</view>
+		<view class='good-info'>
+			<view class='goodname'>
+				<text>{{item.title}}</text>
+			</view>
+			<view class='guige'>
+				<text class='guigename'>口味：{{item.taste}}</text>
+				<text class='goodnum'>{{item.purchaseQuantity}}</text>
+			</view>
+			<view class='price-edit'>
+				<text class='price'>￥{{item.price}}</text>
+			</view>
+		</view>
+	</view>
+	<view class='orderinfo'>
+	  <view class='orderinfodetail'>
+			<text>{{good.order_status}}</text>
+		</view>
+		<view class='orderbtn'>
+			<text class='btnhui' bindtap='delorder' data-id='{{good.order_id}}'>删除订单</text>
+			<text class='btnred'  bindtap='gopay' data-orderid='{{good.order_id}}'>去付款</text>
+		</view>
+	</view>
+</view>
+
+</template>
+
+<!-- 已完成 -->
+<template name="orderfive">	
+<view wx:for='{{goodes}}' wx:for-item="good">
+	<view class='goodslist'  wx:for='{{good.production}}'  data-orderid='{{good.order_id}}'>
+		<view class='goodslist-image'>
+			<image src='{{item.iconUrl}}'></image>
+		</view>
+		<view class='good-info'>
+			<view class='goodname'>
+				<text>{{item.title}}</text>
+			</view>
+			<view class='guige'>
+				<text class='guigename'>口味：{{item.taste}}</text>
+				<text class='goodnum'>{{item.purchaseQuantity}}</text>
+			</view>
+			<view class='price-edit'>
+				<text class='price'>￥{{item.price}}</text>
+			</view>
+			<text class='detail' bindtap='quitdetail' style='clear:both;display:block' data-id='{{item.refund_id}}'>退款详情</text>
+		</view>
+		
+	</view>
+	<view class='orderinfo'>
+	  <view class='orderinfodetail'>
+			<text>{{good.order_status}}</text>
+		</view>
+		<view class='orderbtn'>
+			<text class='btnhui' bindtap='delorder' data-id='{{item.order_id}}'>删除订单</text>
+			
+		</view>
+	</view>
+</view>
+
+</template>
+<!--代发货  -->
+<template name="orderthree">	
+<view wx:for='{{goodes}}' wx:for-item="good">
+	<view class='goodslist'  wx:for='{{good.production}}' bindtap='orderdetail' data-orderid='{{good.order_id}}'>
+		<view class='goodslist-image'>
+			<image src='{{item.iconUrl}}'></image>
+		</view>
+		<view class='good-info'>
+			<view class='goodname'>
+				<text>{{item.title}}</text>
+			</view>
+			<view class='guige'>
+				<text class='guigename'>口味：{{item.taste}}</text>
+				<text class='goodnum'>{{item.purchaseQuantity}}</text>
+			</view>
+			<view class='price-edit'>
+				<text class='price'>￥{{item.price}}</text>
+			</view>
+		</view>
+	</view>
+	<view class='orderinfo'>
+	  <view class='orderinfodetail'>
+			<text>{{good.order_status}}</text>
+		</view>
+		<view class='orderbtn'>	
+			<text class='btnred' bindtap='remind'>提醒发货</text>
+		</view>
+	</view>
+</view>
+
+</template>
+<!--待收货  -->
+<template name="orderfour">	
+<view wx:for='{{goodes}}' wx:for-item="good">
+	<view class='goodslist'  wx:for='{{good.production}}' bindtap='orderdetail' data-orderid='{{good.order_id}}'>
+		<view class='goodslist-image'>
+			<image src='{{item.iconUrl}}'></image>
+		</view>
+		<view class='good-info'>
+			<view class='goodname'>
+				<text>{{item.title}}</text>
+			</view>
+			<view class='guige'>
+				<text class='guigename'>口味：{{item.taste}}</text>
+				<text class='goodnum'>{{item.purchaseQuantity}}</text>
+			</view>
+			<view class='price-edit'>
+				<text class='price'>￥{{item.price}}</text>
+			</view>
+		</view>
+	</view>
+	<view class='orderinfo'>
+	  <view class='orderinfodetail'>
+			<text>{{good.order_status}}</text>
+		</view>
+		<view class='orderbtn'>	
+			<text class='btnred' bindtap='remind'>提醒发货</text>
+		</view>
 	</view>
 </view>
 
@@ -55,4 +192,14 @@
     </scroll-view>
 </view>
 
+</template>
+
+
+
+<template name="no-goods">
+		<image src='../../image/noorder.png' class='noorder'></image>
+    <view  class='nogoodes'>
+        暂无相关订单哦~~~
+    </view>
+   
 </template>

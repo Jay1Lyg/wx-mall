@@ -1,0 +1,80 @@
+@import "../../utils/weui.wxss";
+.waitDetail{
+  padding:30rpx 30rpx 10rpx 30rpx;
+  overflow:hidden;
+  box-sizing: border-box;
+  background:#000;
+  opacity:.7;
+  color:#fff;
+  position:relative;
+}
+.detailImg{
+  width:162rpx;
+  height:162rpx;
+  border-radius:10rpx;
+  margin-right:30rpx;
+}
+.detailImg,
+.detailMsg{
+  float:left;
+}
+.detailMsg{
+  width:490rpx;
+}
+.gray{
+  color:#999;
+}
+.red{
+  color:red;
+}
+.detailMsg{
+  font-size:28rpx;
+}
+.viewHeight{
+  width:750rpx;
+  height:90rpx;
+  line-height:90rpx;
+  font-size:30rpx;
+  padding-left:30rpx;
+  box-sizing: border-box;
+  border-bottom:1px solid #ddd;
+}
+.viewHeight input{
+  display:inline-block;
+  width:500rpx;
+  position:relative;
+  top:16rpx;
+  margin-left:60rpx;
+}
+.textHeight{
+  font-size:30rpx;
+  padding:30rpx 0 0 30rpx;
+  box-sizing: border-box;
+  border-bottom:1px solid #ddd;
+}
+.weui-textarea{
+  position:relative;
+  left:180rpx;
+  top:-40rpx;
+  width:500rpx;
+}
+.submit{
+  background:red;
+  color:#fff;
+  border-radius:0;
+  position:fixed;
+  bottom:0;
+  width:750rpx;
+}
+.lineauto{
+  left:320rpx;
+  position:relative;
+  height:20rpx;
+}
+.line{
+  top:-30rpx;
+}
+.lineUp{
+  position:absolute;
+  bottom:10rpx;
+}

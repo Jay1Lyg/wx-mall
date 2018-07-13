@@ -157,7 +157,7 @@
 .seladdress{
 	margin-top: 30rpx;
 	width: 100%;
-	display: flex;
+	/* display: flex; */
 	border-bottom: 10rpx solid #f2f2f2;
 
 }

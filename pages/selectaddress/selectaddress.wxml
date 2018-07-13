@@ -16,5 +16,6 @@
 		</view>
 	</view>
 </view>
+<view style='height:120rpx;'></view>
 
 <button class='btn' type='warn' bindtap='address'>添加新地址</button>

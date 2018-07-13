@@ -75,10 +75,56 @@
 	flex: 1;
 	text-align: right;
 }
-
-
-
-
+.orderinfo{
+	width: 100%;
+	height: 90rpx;
+	border-bottom: 10rpx solid #f2f2f2;
+	display: flex
+}
+.orderinfodetail{
+	line-height: 90rpx;
+	color: #e7242a;
+	font-size: 28rpx;
+	flex: 1;
+	margin-left: 30rpx;
+}
+.orderbtn{
+	flex: 1;
+	display: flex
+}
+.btnhui{
+	flex: 1;
+	height: 60rpx;
+	border: 1px solid #a1a1a1;
+	color: #a1a1a1;
+	margin-right:20rpx; 
+	border-radius: 10rpx;
+	margin-top: 15rpx;
+	line-height: 60rpx;
+	font-size: 28rpx;
+	text-align: center
+}
+.btnred{
+	height: 60rpx;
+	flex: 1;
+	border:1px solid #e7242a;
+	color: #e7242a;
+		border-radius: 10rpx;
+		margin-right: 30rpx;
+		margin-top: 15rpx;
+		line-height: 60rpx;
+	font-size: 28rpx;
+	text-align: center
+}
+.detail{
+	float: right;
+	color: #e7242a;
+	border: 1rpx solid #e7242a;
+	padding: 10rpx 20rpx;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+	margin-right: 30rpx;
+}
 
 .recommend-detail{
 	width: 100%;
@@ -136,4 +182,17 @@
 .active{color: #e7242a;position: relative;}
 .secondactive{
 	color: #e7242a;
+}
+.nogoodes{
+	text-align: center;
+	margin-top: 20rpx;
+	color: #a1a1a1
+}
+.noorder{
+	width: 400rpx;
+	height: 285rpx;
+	
+	display: block;
+	margin: 0 auto;
+	margin-top: 160rpx;
 }
